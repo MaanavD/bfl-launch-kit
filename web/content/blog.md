@@ -27,6 +27,67 @@ The architecture handles visual consistency, legible typography, and precise col
 
 ---
 
+## Quality vs. Price: Where FLUX.2 Sits
+
+Data from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes ranking image quality. Real ELO scores, not marketing claims.
+
+<div style="margin: 2rem 0; position: relative; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; background: var(--surface, #fff)">
+  <p style="font-size: 0.75rem; color: var(--text-secondary); margin: 0 0 1rem; font-weight: 600">QUALITY (ELO) vs. COST PER 1K IMAGES · Higher + Left = Better</p>
+  <div style="position: relative; height: 320px; margin-left: 40px; margin-bottom: 32px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border)">
+    <!-- Y-axis labels -->
+    <span style="position: absolute; left: -38px; top: 0; font-size: 0.6875rem; color: var(--text-secondary)">1,280</span>
+    <span style="position: absolute; left: -38px; top: 40%; font-size: 0.6875rem; color: var(--text-secondary)">1,200</span>
+    <span style="position: absolute; left: -38px; top: 80%; font-size: 0.6875rem; color: var(--text-secondary)">1,120</span>
+    <!-- X-axis labels -->
+    <span style="position: absolute; bottom: -22px; left: 0; font-size: 0.6875rem; color: var(--text-secondary)">$0</span>
+    <span style="position: absolute; bottom: -22px; left: 50%; font-size: 0.6875rem; color: var(--text-secondary)">$70</span>
+    <span style="position: absolute; bottom: -22px; right: 0; font-size: 0.6875rem; color: var(--text-secondary)">$140</span>
+    <!-- Sweet spot zone -->
+    <div style="position: absolute; left: 0; top: 0; width: 55%; height: 60%; background: oklch(75% 0.1 155 / 0.07); border-radius: 0 0 12px 0; border-right: 1px dashed oklch(55% 0.1 155 / 0.3); border-bottom: 1px dashed oklch(55% 0.1 155 / 0.3)"></div>
+    <span style="position: absolute; left: 8px; top: 4px; font-size: 0.625rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em">Sweet spot</span>
+    <!-- FLUX.2 [dev] Turbo: $8, ELO 1149 -->
+    <div style="position: absolute; left: calc(8 / 140 * 100%); bottom: calc((1149 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
+      <div style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; left: 18px; top: -2px; font-size: 0.6875rem; font-weight: 700; color: var(--accent); white-space: nowrap">FLUX.2 [dev] Turbo<br/><span style="font-weight: 400; font-size: 0.625rem">$8 · 5.1s</span></span>
+    </div>
+    <!-- FLUX.2 [max]: $70, ELO 1200 -->
+    <div style="position: absolute; left: calc(70 / 140 * 100%); bottom: calc((1200 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
+      <div style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; left: 18px; top: -2px; font-size: 0.6875rem; font-weight: 700; color: var(--accent); white-space: nowrap">FLUX.2 [max]<br/><span style="font-weight: 400; font-size: 0.625rem">$70 · 26s</span></span>
+    </div>
+    <!-- GPT Image 1.5: $133, ELO 1266 -->
+    <div style="position: absolute; left: calc(133 / 140 * 100%); bottom: calc((1266 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #888; border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; right: 18px; top: -2px; font-size: 0.6875rem; color: var(--text-secondary); white-space: nowrap; text-align: right">GPT Image 1.5<br/><span style="font-size: 0.625rem">$133 · 38.6s</span></span>
+    </div>
+    <!-- Nano Banana Pro: $134, ELO 1215 -->
+    <div style="position: absolute; left: calc(134 / 140 * 100%); bottom: calc((1215 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background: #888; border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; right: 18px; top: -2px; font-size: 0.6875rem; color: var(--text-secondary); white-space: nowrap; text-align: right">Nano Banana Pro<br/><span style="font-size: 0.625rem">$134 · 18.8s</span></span>
+    </div>
+    <!-- Seedream 4.0: $30, ELO 1185 -->
+    <div style="position: absolute; left: calc(30 / 140 * 100%); bottom: calc((1185 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Seedream 4.0</span>
+    </div>
+    <!-- Imagen 4 Ultra: $60, ELO 1164 -->
+    <div style="position: absolute; left: calc(60 / 140 * 100%); bottom: calc((1164 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Imagen 4 Ultra</span>
+    </div>
+    <!-- Grok: $20, ELO 1169 -->
+    <div style="position: absolute; left: calc(20 / 140 * 100%); bottom: calc((1169 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
+      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
+      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Grok Imagine</span>
+    </div>
+  </div>
+  <p style="font-size: 0.6875rem; color: var(--text-secondary); margin: 0; text-align: right">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis</a>, March 2026</p>
+</div>
+
+The two models that beat FLUX.2 [max] on raw quality — GPT Image 1.5 and Nano Banana Pro — cost roughly double. And neither offers multi-reference consistency, open weights, or self-hosting. FLUX.2 [dev] Turbo sits slightly lower in ELO at **6% of the cost** and 5x the speed. That's the tradeoff space FLUX.2 opens up: near-top-tier quality with production-grade pricing and capabilities the closed models can't match.
+
+---
+
 ## Multi-Reference Control (a.k.a. "Why You Might Not Need That LoRA")
 
 Previous models had no memory. Generate a character once, and the model forgot them immediately. The only workaround was fine-tuning — training custom weights so the model learned a specific face, product, or style. That worked, but it came with real costs: GPU hours, training data curation, cold starts, and a model that drifted every time the base weights updated.
@@ -107,99 +168,6 @@ FLUX.2 ships as four tiers. Same API, same endpoints — just pick the model tha
 </div>
 
 Quick math: generating 47 images for a video project on Pro costs $1.41. Three cents each. A single Shutterstock download starts at $4.
-
----
-
-## Where FLUX.2 Sits: Real Benchmark Data
-
-Numbers from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes ranking image quality across models. These are real ELO scores, not marketing claims.
-
-<div class="benchmark-chart" style="margin: 2rem 0">
-  <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem"><strong>Quality ELO</strong> · Artificial Analysis Image Arena, March 2026 · Higher is better</p>
-  <div style="display: flex; flex-direction: column; gap: 0.5rem">
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">GPT Image 1.5</span>
-      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1266 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,266</span>
-      </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Nano Banana Pro</span>
-      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1215 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,215</span>
-      </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0; font-weight: 700">FLUX.2 [max]</span>
-      <div style="background: var(--accent); height: 24px; border-radius: 4px; width: calc(1200 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,200</span>
-      </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Seedream 4.0</span>
-      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1185 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,185</span>
-      </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Imagen 4 Ultra</span>
-      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1164 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,164</span>
-      </div>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.75rem">
-      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0; font-weight: 700">FLUX.2 [dev] Turbo</span>
-      <div style="background: var(--accent); opacity: 0.7; height: 24px; border-radius: 4px; width: calc(1149 / 1266 * 100%); max-width: 100%; position: relative">
-        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,149</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-The story isn't that FLUX.2 has the highest ELO — GPT Image 1.5 and Nano Banana score higher on raw quality. The story is what you get *for the price*:
-
-<div class="info-table">
-  <table>
-    <thead>
-      <tr>
-        <th>Model</th>
-        <th>Quality ELO</th>
-        <th>Cost / 1K images</th>
-        <th>Gen time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>GPT Image 1.5</td>
-        <td>1,266</td>
-        <td>$133</td>
-        <td>38.6s</td>
-      </tr>
-      <tr>
-        <td>Nano Banana Pro</td>
-        <td>1,215</td>
-        <td>$134</td>
-        <td>18.8s</td>
-      </tr>
-      <tr>
-        <td><strong>FLUX.2 [max]</strong></td>
-        <td><strong>1,200</strong></td>
-        <td><strong>$70</strong></td>
-        <td><strong>26s</strong></td>
-      </tr>
-      <tr>
-        <td><strong>FLUX.2 [dev] Turbo</strong></td>
-        <td><strong>1,149</strong></td>
-        <td><strong>$8</strong></td>
-        <td><strong>5.1s</strong></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<p style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: 0.5rem">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>, March 2026. ELO scores from blind user voting in the Image Arena.</p>
-
-FLUX.2 [max] matches the top tier in quality at half the price. FLUX.2 [dev] Turbo sits 5% behind in ELO at **6% of the cost** and 5x the speed. And neither GPT Image nor Nano Banana offers multi-reference control, open weights, or self-hosting. FLUX.2 does all three.
 
 ---
 
