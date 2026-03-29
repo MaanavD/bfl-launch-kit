@@ -27,88 +27,82 @@ The architecture handles visual consistency, legible typography, and precise col
 
 ---
 
-## The Benchmarks
+## What You Actually Get: FLUX.2 vs. the Field
 
-Quality scores from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes. The quality gap between the top models is small. The cost gap is not.
+ELO scores tell you about single-image quality. They don't tell you whether a model can keep a character's face consistent across 50 generations, or render readable text, or run on your own hardware. Here's the full picture.
 
-<div style="margin: 2rem 0">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem">
-    <!-- Quality chart -->
-    <div>
-      <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em">Quality ELO <span style="font-weight: 400">(higher = better)</span></p>
-      <div style="display: flex; flex-direction: column; gap: 0.4rem">
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">GPT Image 1.5</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: #bbb; height: 22px; border-radius: 3px; width: 100%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,266</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">Nano Banana</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: #bbb; height: 22px; border-radius: 3px; width: 96%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,215</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 700; color: var(--accent)">FLUX.2 [max]</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: var(--accent); height: 22px; border-radius: 3px; width: 94.8%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,200</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 600; color: var(--accent)">FLUX.2 Turbo</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: var(--accent); opacity: 0.65; height: 22px; border-radius: 3px; width: 90.8%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,149</span>
-          </div>
-        </div>
-      </div>
-      <p style="font-size: 0.625rem; color: var(--text-secondary); margin: 0.5rem 0 0; font-style: italic">Bars start at 900 to show actual spread</p>
-    </div>
-    <!-- Cost chart -->
-    <div>
-      <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em">Cost per 1K images <span style="font-weight: 400">(lower = better)</span></p>
-      <div style="display: flex; flex-direction: column; gap: 0.4rem">
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">GPT Image 1.5</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: #d44; height: 22px; border-radius: 3px; width: 99%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$133</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">Nano Banana</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: #d44; height: 22px; border-radius: 3px; width: 100%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$134</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 700; color: var(--accent)">FLUX.2 [max]</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: var(--accent); height: 22px; border-radius: 3px; width: 52%"></div>
-            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$70</span>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem">
-          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 600; color: var(--accent)">FLUX.2 Turbo</span>
-          <div style="flex: 1; position: relative">
-            <div style="background: var(--accent); opacity: 0.65; height: 22px; border-radius: 3px; width: 6%"></div>
-            <span style="position: absolute; left: calc(6% + 6px); top: 50%; transform: translateY(-50%); font-size: 0.6875rem; font-weight: 600">$8</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p style="font-size: 0.6875rem; color: var(--text-secondary); margin: 1rem 0 0">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis Image Arena</a>, March 2026. Pricing from respective provider APIs.</p>
+<div style="margin: 2rem 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.8125rem">
+    <thead>
+      <tr style="background: var(--surface-raised, #f0ede6)">
+        <th style="padding: 0.75rem 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border); width: 40%"></th>
+        <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; border-bottom: 1px solid var(--border); color: var(--accent); width: 20%">FLUX.2</th>
+        <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--text-secondary); width: 20%">GPT Image</th>
+        <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--text-secondary); width: 20%">Nano Banana</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Image quality (ELO)</strong></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); color: var(--accent); font-weight: 600">1,200</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border)">1,266</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border)">1,215</td>
+      </tr>
+      <tr style="background: oklch(75% 0.1 155 / 0.04)">
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Multi-reference consistency</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Same character across scenes</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅ <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600">up to 10 refs</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Text rendering</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Readable multilingual typography</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 0.75rem; color: var(--text-secondary)">Partial</td>
+      </tr>
+      <tr style="background: oklch(75% 0.1 155 / 0.04)">
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Hex color precision</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Exact brand colors, not approximations</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Open weights</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Self-host, fine-tune, own your stack</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅ <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600">Apache 2.0</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr style="background: oklch(75% 0.1 155 / 0.04)">
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Multiple model tiers</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Pick speed vs. quality per request</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅ <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600">4 tiers</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 0.75rem; color: var(--text-secondary)">2 tiers</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Sub-second generation</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Real-time, interactive use cases</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅ <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600">[klein]</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr style="background: oklch(75% 0.1 155 / 0.04)">
+        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Runs on consumer GPUs</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">RTX 3090/4070 (13GB VRAM)</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.625rem 1rem"><strong>Cost per 1K images</strong></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; color: var(--accent); font-weight: 600">$8 – $70</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center">$133</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center">$134</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-Read the left chart: quality is close. The top four models are within 10% of each other. Now read the right chart: FLUX.2 [max] costs half as much as GPT Image or Nano Banana. FLUX.2 Turbo costs **94% less**. The quality bars look almost the same. The cost bars don't.
+<p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem">ELO rankings from <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis Image Arena</a>, March 2026. Capability data from official model documentation.</p>
 
-And that's before factoring in what the closed models can't do at any price — multi-reference consistency (up to 10 images), open weights, and self-hosting.
+GPT Image and Nano Banana score higher on single-image quality. If all you need is one beautiful image with no constraints, they're strong choices. But the moment you need a character to stay consistent across a series, precise brand colors, the ability to self-host, or generation faster than a second — FLUX.2 is the only model that does all of it.
 
 ---
 
