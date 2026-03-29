@@ -22,6 +22,24 @@ EDITING CONVENTIONS
   <img src="/tutorial/cli-comparison.jpg" alt="Generated comparison grid showing three thumbnail directions" loading="lazy" />
 </figure>
 
+## 0 → generating in 60 seconds
+
+Skip the explanation. Clone, set your key, run one command:
+
+```bash
+git clone https://github.com/MaanavD/bfl-launch-kit.git
+cd bfl-launch-kit/thumbnail-generator
+npm install
+echo "BFL_API_KEY=your_key_here" > .env
+node src/index.js "A deep dive into building SaaS products in 2025"
+```
+
+> **Don't have a key yet?** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add $10 in credits → API → Keys → create key.
+
+Open `viewer.html` in your browser. You'll see three distinct thumbnail options. Total cost: ~$0.04. Keep reading for the how and why.
+
+---
+
 I make thumbnails for every video I publish, and my old workflow was painful: open Figma, hunt for stock photos, try 4 compositions, export, squint at them on my phone, go back, repeat. An hour per thumbnail on a good day.
 
 So I built a CLI tool that does it in 10 seconds. You give it a video description, it generates three distinct thumbnail directions using FLUX.2, and you pick the one you like. That's the whole thing.
@@ -35,58 +53,15 @@ A CLI tool that turns a video description into 3 thumbnails. Along the way, you'
 ## Prerequisites
 
 - Node.js 20+
-- A BFL API key — grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/). $5 in credits is more than enough.
+- A BFL API key — grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/). $10 in credits is more than enough.
 
 ---
 
 ## How it works
 
-The pipeline is straightforward: take your description, wrap it in three different style templates, fire all three prompts at FLUX.2 concurrently, then stitch the results into a comparison grid. If you pass a headshot, FLUX.2's multi-reference editing keeps your face consistent across all three variants.
+Description in → three style templates → three concurrent FLUX.2 calls → comparison grid out. If you pass a headshot, FLUX.2's multi-reference editing keeps your face consistent across all variants.
 
-```
-                                     +----------------------------+
-+----------------+    +-----------+  |   BFL FLUX.2 API           |
-| CLI Input      |    | Prompt    |  |   flux-2-klein-4b          |
-|                |--->| Builder   |->|                            |
-| description    |    |           |  |   3 concurrent requests    |
-| + [headshot]   |    | 3 style   |  |   (+ face if provided)     |
-+----------------+    | templates |  +-----------+----------------+
-                      +-----------+              |
-                                    +------------v---------------+
-                                    |   sharp (compositing)      |
-                                    |   3 individual JPGs        |
-                                    |   + comparison grid        |
-                                    +------------+---------------+
-                                                 |
-                                    +------------v---------------+
-                                    |   HTML Viewer (local file) |
-                                    |   Compare all 3 - Copy     |
-                                    +----------------------------+
-```
-
-### Why no LLM for prompts?
-
-I tried it. GPT-4 would "improve" my prompts by adding stuff I didn't ask for — extra characters, different compositions, creative liberties that made the outputs unpredictable. Templates are better here because they're deterministic. Same description in, same three style directions out. One fewer dependency, one fewer bill, one fewer thing to debug.
-
-### Why FLUX.2?
-
-Thumbnails need prompt adherence more than raw fidelity. If I say "person on the left, text on the right," I need the model to actually do that — not improvise. FLUX.2 follows composition and layout instructions well enough that style templates produce usable results instead of random interpretations. The `flux-2-klein-4b` endpoint is also fast (a few seconds) and cheap ($0.014/image) enough to generate three options per run without thinking about cost.
-
-### Cost per run
-
-<div class="info-table">
-  <table>
-    <thead>
-      <tr><th>Component</th><th>Cost</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>FLUX.2 × 3 images (1344×768)</td><td>~$0.04</td></tr>
-      <tr><td><strong>Total per run</strong></td><td><strong>~$0.04</strong></td></tr>
-    </tbody>
-  </table>
-</div>
-
-Four cents for three thumbnail concepts. I ran this tool ~30 times while building it and spent about a dollar.
+**Why FLUX.2 and not an LLM for prompts?** I tried GPT-4 for prompt expansion and it kept adding stuff I didn't ask for — extra characters, different compositions. Templates are deterministic: same input, same three directions. And FLUX.2 specifically because thumbnails need prompt adherence over raw fidelity. The `flux-2-klein-4b` endpoint follows layout instructions reliably, runs in a few seconds, and costs ~$0.014/image. Four cents for three thumbnails.
 
 ---
 
@@ -106,7 +81,7 @@ Create a `.env` file:
 BFL_API_KEY=your_bfl_api_key_here
 ```
 
-> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add credits ($5 minimum) → API → Keys → create key. Copy it immediately — you only see the full key once.
+> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add credits ($10 minimum) → API → Keys → create key. Copy it immediately — you only see the full key once.
 
 ### Step 2: The prompt builder
 
@@ -131,7 +106,7 @@ export function buildPrompts(description, hasFace = false) {
 }
 ```
 
-Each template wraps your description in a different visual direction — Cinematic, Graphic, Abstract. When you pass a face reference, the templates tell FLUX.2 to feature that person as the subject. You provide the content. The templates provide the style.
+Three templates (Cinematic, Graphic, Abstract), each wrapping your description in a different visual direction. When a face reference is present, the templates tell FLUX.2 to keep that person as the subject.
 
 ### Step 3: Calling the FLUX.2 API
 
@@ -161,7 +136,7 @@ const response = await fetch(FLUX_ENDPOINT, {
 const { polling_url } = await response.json();
 ```
 
-Same endpoint for text-to-image and multi-reference editing. When `input_image` is present, FLUX.2 activates character consistency automatically. No separate endpoints, no mode switching.
+When `input_image` is present, FLUX.2 activates character consistency automatically — same endpoint either way.
 
 ### Step 4: The polling pattern
 
@@ -181,11 +156,11 @@ for (let poll = 0; poll < MAX_POLLS; poll++) {
 }
 ```
 
-All 3 generations run concurrently via `Promise.all`. Total wait time = the slowest image, not three sequential waits.
+All 3 run concurrently via `Promise.all` — total wait = the slowest image, not three sequential calls.
 
 ### Step 5: Run it
 
-**Basic (text-to-image from a description):**
+**Basic:**
 
 ```bash
 node src/index.js "A deep dive into building SaaS products in 2025. We cover the full stack: React frontend, serverless backend on AWS, Stripe billing integration, and why most indie hackers fail at distribution not engineering."
@@ -263,15 +238,7 @@ Each run overwrites `output/` with fresh results. Under 10 seconds end to end.
 
 ## Where to go from here
 
-You now have a working thumbnail generator that runs locally in a few seconds. The GitHub repo also includes a `pipeline/` folder — an Express server that automates this same flow as part of a YouTube publishing workflow, if you want to take it further.
-
-The core pattern is reusable:
-
-```
-description -> prompt templates -> FLUX.2 -> thumbnails
-```
-
-Wire it into a webhook, a CI pipeline, a Slack bot, a cron job — the API call is the same regardless of where you put it.
+The CLI tool is the building block. The repo also ships a `pipeline/` folder that wires the same generation logic into a fully automated YouTube workflow — new video goes up, thumbnails generate automatically, and one gets set as the live thumbnail via the YouTube API. Same BFL API calls, just wrapped in a webhook listener. Setup instructions are in the [pipeline README](https://github.com/MaanavD/bfl-launch-kit/tree/main/pipeline).
 
 ---
 
