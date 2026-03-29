@@ -193,23 +193,19 @@ node src/index.js "A deep dive into building SaaS products in 2025. We cover the
 
 **With a face (put yourself in the thumbnails):**
 
-<div style="display: flex; gap: 1.5rem; align-items: flex-start; margin: 1rem 0 1.5rem">
+<div style="display: flex; gap: 1.5rem; align-items: center; margin: 1rem 0 1.5rem">
   <img
     src="/tutorial/headshot.jpg"
     alt="Example headshot used as a face reference"
-    style="width: 100px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0"
+    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0"
     loading="lazy"
   />
-  <div style="min-width: 0">
-
-Pass a headshot via `--face` and FLUX.2 keeps that person consistent across all three thumbnail directions.
+  <p style="margin: 0; font-size: 0.9375rem">Pass a headshot via <code>--face</code> and FLUX.2 keeps that person consistent across all three thumbnail directions.</p>
+</div>
 
 ```bash
 node src/index.js "A deep dive into building SaaS products in 2025" --face headshot.jpg
 ```
-
-  </div>
-</div>
 
 **From a file** (for longer descriptions):
 
