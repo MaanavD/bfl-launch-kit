@@ -1,0 +1,21 @@
+node_modules/
+.env
+.youtube-token.json
+
+# Build artifacts
+.next/
+out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor tooling
+.agents/
+skills-lock.json
