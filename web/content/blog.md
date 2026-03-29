@@ -27,64 +27,88 @@ The architecture handles visual consistency, legible typography, and precise col
 
 ---
 
-## Quality vs. Price: Where FLUX.2 Sits
+## The Benchmarks
 
-Data from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes ranking image quality. Real ELO scores, not marketing claims.
+Quality scores from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes. The quality gap between the top models is small. The cost gap is not.
 
-<div style="margin: 2rem 0; position: relative; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; background: var(--surface, #fff)">
-  <p style="font-size: 0.75rem; color: var(--text-secondary); margin: 0 0 1rem; font-weight: 600">QUALITY (ELO) vs. COST PER 1K IMAGES · Higher + Left = Better</p>
-  <div style="position: relative; height: 320px; margin-left: 40px; margin-bottom: 32px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border)">
-    <!-- Y-axis labels -->
-    <span style="position: absolute; left: -38px; top: 0; font-size: 0.6875rem; color: var(--text-secondary)">1,280</span>
-    <span style="position: absolute; left: -38px; top: 40%; font-size: 0.6875rem; color: var(--text-secondary)">1,200</span>
-    <span style="position: absolute; left: -38px; top: 80%; font-size: 0.6875rem; color: var(--text-secondary)">1,120</span>
-    <!-- X-axis labels -->
-    <span style="position: absolute; bottom: -22px; left: 0; font-size: 0.6875rem; color: var(--text-secondary)">$0</span>
-    <span style="position: absolute; bottom: -22px; left: 50%; font-size: 0.6875rem; color: var(--text-secondary)">$70</span>
-    <span style="position: absolute; bottom: -22px; right: 0; font-size: 0.6875rem; color: var(--text-secondary)">$140</span>
-    <!-- Sweet spot zone -->
-    <div style="position: absolute; left: 0; top: 0; width: 55%; height: 60%; background: oklch(75% 0.1 155 / 0.07); border-radius: 0 0 12px 0; border-right: 1px dashed oklch(55% 0.1 155 / 0.3); border-bottom: 1px dashed oklch(55% 0.1 155 / 0.3)"></div>
-    <span style="position: absolute; left: 8px; top: 4px; font-size: 0.625rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em">Sweet spot</span>
-    <!-- FLUX.2 [dev] Turbo: $8, ELO 1149 -->
-    <div style="position: absolute; left: calc(8 / 140 * 100%); bottom: calc((1149 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
-      <div style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; left: 18px; top: -2px; font-size: 0.6875rem; font-weight: 700; color: var(--accent); white-space: nowrap">FLUX.2 [dev] Turbo<br/><span style="font-weight: 400; font-size: 0.625rem">$8 · 5.1s</span></span>
+<div style="margin: 2rem 0">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem">
+    <!-- Quality chart -->
+    <div>
+      <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em">Quality ELO <span style="font-weight: 400">(higher = better)</span></p>
+      <div style="display: flex; flex-direction: column; gap: 0.4rem">
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">GPT Image 1.5</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: #bbb; height: 22px; border-radius: 3px; width: 100%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,266</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">Nano Banana</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: #bbb; height: 22px; border-radius: 3px; width: 96%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,215</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 700; color: var(--accent)">FLUX.2 [max]</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: var(--accent); height: 22px; border-radius: 3px; width: 94.8%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,200</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 600; color: var(--accent)">FLUX.2 Turbo</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: var(--accent); opacity: 0.65; height: 22px; border-radius: 3px; width: 90.8%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">1,149</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 0.625rem; color: var(--text-secondary); margin: 0.5rem 0 0; font-style: italic">Bars start at 900 to show actual spread</p>
     </div>
-    <!-- FLUX.2 [max]: $70, ELO 1200 -->
-    <div style="position: absolute; left: calc(70 / 140 * 100%); bottom: calc((1200 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
-      <div style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; left: 18px; top: -2px; font-size: 0.6875rem; font-weight: 700; color: var(--accent); white-space: nowrap">FLUX.2 [max]<br/><span style="font-weight: 400; font-size: 0.625rem">$70 · 26s</span></span>
-    </div>
-    <!-- GPT Image 1.5: $133, ELO 1266 -->
-    <div style="position: absolute; left: calc(133 / 140 * 100%); bottom: calc((1266 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
-      <div style="width: 12px; height: 12px; border-radius: 50%; background: #888; border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; right: 18px; top: -2px; font-size: 0.6875rem; color: var(--text-secondary); white-space: nowrap; text-align: right">GPT Image 1.5<br/><span style="font-size: 0.625rem">$133 · 38.6s</span></span>
-    </div>
-    <!-- Nano Banana Pro: $134, ELO 1215 -->
-    <div style="position: absolute; left: calc(134 / 140 * 100%); bottom: calc((1215 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 2">
-      <div style="width: 12px; height: 12px; border-radius: 50%; background: #888; border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; right: 18px; top: -2px; font-size: 0.6875rem; color: var(--text-secondary); white-space: nowrap; text-align: right">Nano Banana Pro<br/><span style="font-size: 0.625rem">$134 · 18.8s</span></span>
-    </div>
-    <!-- Seedream 4.0: $30, ELO 1185 -->
-    <div style="position: absolute; left: calc(30 / 140 * 100%); bottom: calc((1185 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Seedream 4.0</span>
-    </div>
-    <!-- Imagen 4 Ultra: $60, ELO 1164 -->
-    <div style="position: absolute; left: calc(60 / 140 * 100%); bottom: calc((1164 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Imagen 4 Ultra</span>
-    </div>
-    <!-- Grok: $20, ELO 1169 -->
-    <div style="position: absolute; left: calc(20 / 140 * 100%); bottom: calc((1169 - 1080) / (1280 - 1080) * 100%); transform: translate(-50%, 50%); z-index: 1">
-      <div style="width: 10px; height: 10px; border-radius: 50%; background: #aaa; border: 2px solid var(--surface, #fff)"></div>
-      <span style="position: absolute; left: 16px; top: -1px; font-size: 0.625rem; color: var(--text-secondary); white-space: nowrap">Grok Imagine</span>
+    <!-- Cost chart -->
+    <div>
+      <p style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: 0.05em">Cost per 1K images <span style="font-weight: 400">(lower = better)</span></p>
+      <div style="display: flex; flex-direction: column; gap: 0.4rem">
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">GPT Image 1.5</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: #d44; height: 22px; border-radius: 3px; width: 99%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$133</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; color: var(--text-secondary)">Nano Banana</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: #d44; height: 22px; border-radius: 3px; width: 100%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$134</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 700; color: var(--accent)">FLUX.2 [max]</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: var(--accent); height: 22px; border-radius: 3px; width: 52%"></div>
+            <span style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 0.6875rem; color: white; font-weight: 600">$70</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem">
+          <span style="width: 110px; text-align: right; font-size: 0.75rem; flex-shrink: 0; font-weight: 600; color: var(--accent)">FLUX.2 Turbo</span>
+          <div style="flex: 1; position: relative">
+            <div style="background: var(--accent); opacity: 0.65; height: 22px; border-radius: 3px; width: 6%"></div>
+            <span style="position: absolute; left: calc(6% + 6px); top: 50%; transform: translateY(-50%); font-size: 0.6875rem; font-weight: 600">$8</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <p style="font-size: 0.6875rem; color: var(--text-secondary); margin: 0; text-align: right">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis</a>, March 2026</p>
+  <p style="font-size: 0.6875rem; color: var(--text-secondary); margin: 1rem 0 0">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis Image Arena</a>, March 2026. Pricing from respective provider APIs.</p>
 </div>
 
-The two models that beat FLUX.2 [max] on raw quality — GPT Image 1.5 and Nano Banana Pro — cost roughly double. And neither offers multi-reference consistency, open weights, or self-hosting. FLUX.2 [dev] Turbo sits slightly lower in ELO at **6% of the cost** and 5x the speed. That's the tradeoff space FLUX.2 opens up: near-top-tier quality with production-grade pricing and capabilities the closed models can't match.
+Read the left chart: quality is close. The top four models are within 10% of each other. Now read the right chart: FLUX.2 [max] costs half as much as GPT Image or Nano Banana. FLUX.2 Turbo costs **94% less**. The quality bars look almost the same. The cost bars don't.
+
+And that's before factoring in what the closed models can't do at any price — multi-reference consistency (up to 10 images), open weights, and self-hosting.
 
 ---
 
