@@ -29,7 +29,7 @@ The architecture handles visual consistency, legible typography, and precise col
 
 ## What You Actually Get: FLUX.2 vs. the Field
 
-ELO scores tell you about single-image quality. They don't tell you whether a model can keep a character's face consistent across 50 generations, or render readable text, or run on your own hardware. Here's the full picture.
+Single-image quality is close across the top models now. The real question is what else you get: can the model keep a character consistent, render readable text, run on your own hardware? Here's the full picture.
 
 <div style="margin: 2rem 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden">
   <table style="width: 100%; border-collapse: collapse; font-size: 0.8125rem">
@@ -42,12 +42,6 @@ ELO scores tell you about single-image quality. They don't tell you whether a mo
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Image quality (ELO)</strong></td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); color: var(--accent); font-weight: 600">1,200</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border)">1,266</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border)">1,215</td>
-      </tr>
       <tr style="background: oklch(75% 0.1 155 / 0.04)">
         <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Multi-reference consistency</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">Same character across scenes</span></td>
         <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅ <span style="font-size: 0.75rem; color: var(--accent); font-weight: 600">up to 10 refs</span></td>
@@ -85,24 +79,18 @@ ELO scores tell you about single-image quality. They don't tell you whether a mo
         <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
       </tr>
       <tr style="background: oklch(75% 0.1 155 / 0.04)">
-        <td style="padding: 0.625rem 1rem; border-bottom: 1px solid var(--border)"><strong>Runs on consumer GPUs</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">RTX 3090/4070 (13GB VRAM)</span></td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem">✅</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 1.125rem; opacity: 0.4">✗</td>
-      </tr>
-      <tr>
-        <td style="padding: 0.625rem 1rem"><strong>Cost per 1K images</strong></td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center; color: var(--accent); font-weight: 600">$8 – $70</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center">$133</td>
-        <td style="padding: 0.625rem 0.5rem; text-align: center">$134</td>
+        <td style="padding: 0.625rem 1rem"><strong>Runs on consumer GPUs</strong><br/><span style="font-size: 0.75rem; color: var(--text-secondary)">RTX 3090/4070 (13GB VRAM)</span></td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; font-size: 1.125rem">✅</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; font-size: 1.125rem; opacity: 0.4">✗</td>
+        <td style="padding: 0.625rem 0.5rem; text-align: center; font-size: 1.125rem; opacity: 0.4">✗</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem">ELO rankings from <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary)">Artificial Analysis Image Arena</a>, March 2026. Capability data from official model documentation.</p>
+<p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem">Capability data from official model documentation.</p>
 
-GPT Image and Nano Banana score higher on single-image quality. If all you need is one beautiful image with no constraints, they're strong choices. But the moment you need a character to stay consistent across a series, precise brand colors, the ability to self-host, or generation faster than a second — FLUX.2 is the only model that does all of it.
+Image quality across the top models is competitive — they all produce great outputs. The difference is what you can do beyond a single generation. Consistent characters across a series, precise brand colors, self-hosting, real-time speed — FLUX.2 is the only model that does all of it.
 
 ---
 
