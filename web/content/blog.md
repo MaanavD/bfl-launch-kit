@@ -37,6 +37,18 @@ Want a consistent character across a comic strip? Attach the face reference. Nee
 
 That doesn't mean LoRAs are dead — they're still the right tool for deeply specialized aesthetics or styles that go beyond what reference images can capture. But for the consistency problems that drove most teams to fine-tune in the first place? Reference images handle it now, at zero training cost and zero cold-start delay.
 
+### See it yourself: the comic strip test
+
+The best way to test character consistency is the simplest: give three different models the same character reference and ask for three comic panels. Same person, different scenes. Here are the prompts — try them on FLUX.2 (with a reference image attached), GPT Image 1.5, and Nano Banana and compare the results:
+
+**Panel 1:** "A woman with short red hair and round glasses sits at a messy desk covered in coffee cups, coding on a laptop. Overhead fluorescent lighting, office setting, graphic novel style."
+
+**Panel 2:** "The same woman with short red hair and round glasses stands in a rainy street at night, holding an umbrella, neon signs reflecting in puddles. Graphic novel style."
+
+**Panel 3:** "The same woman with short red hair and round glasses sits in a sunlit cafe booth, laughing while holding a phone. Warm morning light, graphic novel style."
+
+With FLUX.2, you attach the character reference once and the face, glasses, and hair stay locked across all three panels. With models that don't support reference images, you're relying on prompt description alone — and the character drifts. The glasses change shape, the hair shifts color, the face becomes a different person. Run it and see.
+
 ---
 
 ## Text That Reads and Colors That Match
@@ -95,6 +107,99 @@ FLUX.2 ships as four tiers. Same API, same endpoints — just pick the model tha
 </div>
 
 Quick math: generating 47 images for a video project on Pro costs $1.41. Three cents each. A single Shutterstock download starts at $4.
+
+---
+
+## Where FLUX.2 Sits: Real Benchmark Data
+
+Numbers from the [Artificial Analysis Image Arena](https://artificialanalysis.ai/text-to-image) — millions of blind user votes ranking image quality across models. These are real ELO scores, not marketing claims.
+
+<div class="benchmark-chart" style="margin: 2rem 0">
+  <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem"><strong>Quality ELO</strong> · Artificial Analysis Image Arena, March 2026 · Higher is better</p>
+  <div style="display: flex; flex-direction: column; gap: 0.5rem">
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">GPT Image 1.5</span>
+      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1266 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,266</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Nano Banana Pro</span>
+      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1215 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,215</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0; font-weight: 700">FLUX.2 [max]</span>
+      <div style="background: var(--accent); height: 24px; border-radius: 4px; width: calc(1200 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,200</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Seedream 4.0</span>
+      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1185 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,185</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0">Imagen 4 Ultra</span>
+      <div style="background: #888; height: 24px; border-radius: 4px; width: calc(1164 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,164</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <span style="width: 160px; text-align: right; font-size: 0.8125rem; flex-shrink: 0; font-weight: 700">FLUX.2 [dev] Turbo</span>
+      <div style="background: var(--accent); opacity: 0.7; height: 24px; border-radius: 4px; width: calc(1149 / 1266 * 100%); max-width: 100%; position: relative">
+        <span style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: white; font-weight: 600">1,149</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+The story isn't that FLUX.2 has the highest ELO — GPT Image 1.5 and Nano Banana score higher on raw quality. The story is what you get *for the price*:
+
+<div class="info-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Quality ELO</th>
+        <th>Cost / 1K images</th>
+        <th>Gen time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GPT Image 1.5</td>
+        <td>1,266</td>
+        <td>$133</td>
+        <td>38.6s</td>
+      </tr>
+      <tr>
+        <td>Nano Banana Pro</td>
+        <td>1,215</td>
+        <td>$134</td>
+        <td>18.8s</td>
+      </tr>
+      <tr>
+        <td><strong>FLUX.2 [max]</strong></td>
+        <td><strong>1,200</strong></td>
+        <td><strong>$70</strong></td>
+        <td><strong>26s</strong></td>
+      </tr>
+      <tr>
+        <td><strong>FLUX.2 [dev] Turbo</strong></td>
+        <td><strong>1,149</strong></td>
+        <td><strong>$8</strong></td>
+        <td><strong>5.1s</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: 0.5rem">Source: <a href="https://artificialanalysis.ai/text-to-image" target="_blank" rel="noopener noreferrer">Artificial Analysis</a>, March 2026. ELO scores from blind user voting in the Image Arena.</p>
+
+FLUX.2 [max] matches the top tier in quality at half the price. FLUX.2 [dev] Turbo sits 5% behind in ELO at **6% of the cost** and 5x the speed. And neither GPT Image nor Nano Banana offers multi-reference control, open weights, or self-hosting. FLUX.2 does all three.
 
 ---
 

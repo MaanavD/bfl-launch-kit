@@ -7,9 +7,11 @@ export default function StrategyTab() {
     <>
       <AuthorNote label="Author's Note" heading="The launch playbook">
         <p>
-          This is the strategic layer: a one-page plan for how all the launch-day content fits together
-          and what I'd build next with more time. <strong>Audience:</strong> the BFL team evaluating
-          how I think about developer adoption beyond individual pieces of content.
+          A one-page plan for how all the launch-day content fits together.
+          Each deliverable targets a different moment: the <strong>blog post</strong> gets
+          attention (HN, Twitter/X, subreddits), the <strong>tutorial</strong> drives the first
+          API call, and the <strong>video</strong> shows-don't-tells for the audience that won't
+          clone a repo. The strategy below covers sequencing, conversion mechanics, and distribution.
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />
