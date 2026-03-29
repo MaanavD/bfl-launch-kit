@@ -316,6 +316,11 @@ a {
   color: var(--accent-hover);
 }
 
+.prose .cta-block a {
+  color: oklch(98% 0.005 85);
+  text-decoration: none;
+}
+
 .prose code {
   font-family: "SF Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
   font-size: 0.8125rem;
