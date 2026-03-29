@@ -4,8 +4,6 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from storage import Storage
-
 log = logging.getLogger("fluxbot.styles")
 
 MAX_STYLE_LENGTH = 500
@@ -14,7 +12,7 @@ MAX_STYLE_LENGTH = 500
 class Styles(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.storage = Storage()
+        self.storage = bot.storage
 
     @app_commands.command(name="setstyle", description="Set your personal image style")
     @app_commands.describe(style="Your style (e.g. 'cyberpunk anime, neon lighting, 4k')")

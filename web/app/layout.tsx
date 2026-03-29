@@ -16,14 +16,14 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "FLUX.2 Launch Kit — Case Study by Maanav",
+  title: "FLUX.2 Launch Kit | Case Study by Maanav",
   description:
-    "Launch-day content for FLUX.2: written tutorial, video walkthrough, blog post, and strategy — all in one place.",
+    "Launch-day content for FLUX.2: written tutorial, video walkthrough, blog post, and strategy, all in one place.",
   icons: {
     icon: "/bfl-symbol-black.svg",
   },
   openGraph: {
-    title: "FLUX.2 Launch Kit — Case Study",
+    title: "FLUX.2 Launch Kit | Case Study",
     description:
       "Launch-day content for FLUX.2: written tutorial, video walkthrough, blog post, and strategy.",
     type: "website",

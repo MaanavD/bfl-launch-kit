@@ -37,7 +37,7 @@ class Restyle(commands.Cog):
         model: str = "pro",
     ):
         # Check for API key (user's personal key takes priority over server key)
-        api_key = await self.storage.resolve_api_key(interaction.user.id, interaction.guild_id)
+        api_key, source = await self.storage.resolve_api_key(interaction.user.id, interaction.guild_id)
         if not api_key:
             await interaction.response.send_message(
                 "**No API key set!** Either:\n"

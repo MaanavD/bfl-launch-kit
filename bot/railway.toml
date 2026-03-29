@@ -5,3 +5,6 @@ builder = "RAILPACK"
 startCommand = "python main.py"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
+
+# Attach a Railway Volume mounted at /data so the SQLite DB persists across deploys.
+# In the Railway dashboard: Service → Settings → Volumes → Add Volume → Mount Path: /data

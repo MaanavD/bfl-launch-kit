@@ -20,7 +20,7 @@
 
 **Runtime target:** 7–9 minutes (sweet spot for YouTube retention at this production level)
 
-**Pacing philosophy:** This is NOT a coding tutorial. It's a product demo with just enough "under the hood" to make people feel empowered. Think Apple keynote energy meets casual Discord vibe.
+**Pacing philosophy:** This is NOT a coding tutorial. It's a product demo with just enough "under the hood" to make people feel like they could build it. Think Apple keynote energy meets casual Discord hang.
 
 **Visual language:**
 - Discord UI = always dark mode
@@ -57,12 +57,12 @@
 > `A cyberpunk samurai standing motionless in heavy rain on a Tokyo street at night, neon signs reflecting off wet pavement in pink and blue, cinematic depth of field, hyper-detailed armor with glowing accents, volumetric fog, 8k photograph`
 
 **VO (energetic, almost disbelief):**
-> "That — was made in a group chat. No app. No Photoshop. No $30-a-month subscription. Just a Discord bot and one line of text."
+> "That — was made in a group chat. No Photoshop. No Midjourney subscription. A Discord bot and one sentence."
 
 **VISUAL:** Cut to FACE CAM — medium shot, casual setting (desk, monitor visible behind you). You're leaning slightly forward, direct to camera.
 
 **VO:**
-> "This is FLUX.2 — the latest image model from Black Forest Labs, the same research team behind Stable Diffusion. And I built a Discord bot that puts it directly in your server. You type a prompt. You get this."
+> "This is FLUX.2 — the latest image model from Black Forest Labs, the research team behind Stable Diffusion. I built a Discord bot that puts it right in your server. Type a prompt. Get this back."
 
 > **ON-CAMERA NOTE:** The BFL name-drop matters for credibility. Don't rush it — land the line, let the audience register it.
 
@@ -76,7 +76,7 @@
 > 5. `Anime-style portrait of a female space pilot in a cockpit, stars visible through the windshield, dramatic side lighting, detailed mechanical controls`
 
 **VO (over montage):**
-> "Event flyers. Gaming thumbnails. Product mockups. Memes. Your D&D party's character portraits. Whatever your community needs, this bot makes it — right where everyone already hangs out."
+> "Event flyers. Gaming thumbnails. Product mockups. Your D&D party's character art. Whatever your community needs — this thing makes it right where everyone already hangs out."
 
 ---
 
@@ -85,12 +85,12 @@
 **VISUAL:** Cut to face cam. Shift to a slightly more personal, storytelling tone.
 
 **VO:**
-> "Quick story. My buddy runs a D&D server — about fifty people. Every campaign, he needs character art for new NPCs, scene illustrations for boss fights, maps. He was spending hours on Midjourney, downloading images, re-uploading them to Discord threads, trying to keep it all organized. It was a whole workflow outside the server."
+> "Quick story. My buddy runs a D&D server — about fifty people. Every campaign, he needs character art for new NPCs, scene illustrations for boss fights, maps. He was spending hours on Midjourney, downloading images, re-uploading them to Discord threads. A whole workflow just to get art into the server."
 
 *[Beat]*
 
 **VO:**
-> "I told him: give me five minutes. I dropped this bot in his server, set a dark fantasy style, and typed one prompt. His reaction..."
+> "I told him: give me five minutes. I dropped this bot in his server, set a dark fantasy style, and typed one prompt. His reaction was…"
 
 **VISUAL:** Cut to a Discord screenshot or screen recording — the friend's actual reaction message. Something like:
 
@@ -101,7 +101,7 @@
 > **PRODUCTION NOTE:** This needs to be real. Get your friend to actually react in Discord when you demonstrate the bot for them. Screen-record the whole thing. The genuine surprise is what makes this moment land. If you can get 2-3 friends reacting in a channel, even better.
 
 **VO:**
-> "Now his entire server generates their own character art, their own scene illustrations, their own maps — all without leaving the chat. That's what this bot does. Let me show you everything."
+> "Now the whole server generates their own character art, scene illustrations, maps — without ever leaving the chat. That's the point of this bot. Let me show you."
 
 **ON-SCREEN TEXT** (lower third, clean sans-serif):
 ```
@@ -124,7 +124,7 @@ Powered by Black Forest Labs FLUX.2 API
 **VISUAL:** Screen recording — a Discord server. The server has a channel called `#image-lab`. A few users are chatting casually.
 
 **VO:**
-> "Alright, here's the bot in a real server. Nothing fancy — just a Discord server with FluxBot invited."
+> "Here's the bot in a real server. Nothing fancy — just a Discord server with FluxBot added."
 
 **VISUAL:** You type in the Discord message box:
 ```
@@ -144,12 +144,12 @@ Powered by Black Forest Labs FLUX.2 API
 > `A massive dragon perched on top of a modern glass skyscraper during a violent thunderstorm, a bolt of lightning illuminating its iridescent scales, rain streaking past, cinematic ultra wide angle shot from below, dramatic clouds, photorealistic, 8k`
 
 **VO (genuine reaction):**
-> "Every single time, man. The detail on this is wild. Look at the lighting on the scales. This is from a single sentence in a chat app."
+> "Every time. The detail on this is wild — look at the lighting on the scales. This is from one sentence typed into a chat app."
 
 **VISUAL:** Cut to face cam briefly.
 
 **VO:**
-> "But here's where it gets interesting. What if you want everything you make to have a specific look?"
+> "But here's what makes it actually useful. What if you want everything you generate to have a certain look?"
 
 ---
 
@@ -201,7 +201,7 @@ Then generates the same subject:
 > `A lone knight crossing a simple stone bridge over a chasm, clean vector illustration style, flat design, pastel color palette, minimal shapes, geometric, modern graphic design aesthetic`
 
 **VO:**
-> "Same prompt. Same bot. Same server. Two completely different styles — because every user has their own. That's the whole point. This isn't one-size-fits-all. It's YOUR image engine."
+> "Same prompt. Same bot. Same server. Two completely different images — because each user has their own style. It's not one-size-fits-all. It's your image engine, configured the way you want it."
 
 **ON-SCREEN TEXT** (centered, bold):
 ```
@@ -229,7 +229,7 @@ Same prompt. Different users. Different art.
 > Attach a real, boring desk/room photo as `input_image`, prompt: `A detailed oil painting in the style of the Dutch Golden Age masters, dramatic candlelight illumination, rich warm colors, visible brushstrokes, gallery quality, museum piece`
 
 **VO (genuine reaction):**
-> "That's my actual desk. Same stuff, same angle — but FLUX turned it into something that looks like it belongs in a museum. And it took about five seconds."
+> "That's my actual desk. Same mess, same angle — but FLUX turned it into something you'd hang on a wall. Five seconds."
 
 **VISUAL:** Cut to face cam.
 
@@ -245,12 +245,12 @@ Same prompt. Different users. Different art.
 > 4. **Small business/DTC:** A flat lay product photo on a kitchen table → `Professional product photograph, clean white background, studio lighting, commercial e-commerce quality`
 
 **VO (over montage):**
-> "Cosplay photos into anime key art. A rehearsal photo into a tour poster. A game screenshot into a cinematic wallpaper. A kitchen-table product shot into an e-commerce hero image. Same bot. Different communities. Different magic."
+> "Cosplay photo into anime key art. A rehearsal shot into a tour poster. A game screenshot into concept art. A kitchen-table product photo into an e-commerce hero image. Same bot. Different communities."
 
 **VISUAL:** Cut to face cam. Slight lean back, casual.
 
 **VO:**
-> "Now — you're probably wondering what's going on behind the curtain. Let me show you. And I promise, it's way simpler than you think."
+> "Now — you're probably wondering what's actually going on behind the scenes. Let me show you. I promise it's simpler than you'd expect."
 
 ---
 
@@ -260,7 +260,7 @@ Same prompt. Different users. Different art.
 
 ---
 
-> **PRODUCTION NOTE:** This section needs to feel FAST and LIGHT. The audience is non-technical. We're not teaching them to code — we're showing them that the code is simple enough that ANYONE could set this up with a little copy-paste. The energy should be "look how easy this is" not "let me explain every line."
+> **PRODUCTION NOTE:** This section needs to move FAST. The audience isn't here for a Python lesson — they're here to see that the code is simple enough that they could set it up with copy-paste and an afternoon. Energy = "look how little code this is" not "let me walk you through the implementation."
 
 ---
 
@@ -285,7 +285,7 @@ Same prompt. Different users. Different art.
 > `Minimal technical architecture diagram on a dark navy background, three rounded rectangles connected by glowing arrows, clean sans-serif labels reading "Discord", "Bot", "FLUX API", modern tech aesthetic, flat design, subtle grid pattern in background`
 
 **VO:**
-> "Here's the entire thing. A user types a command in Discord. Your bot catches it, sends the prompt to the FLUX API by Black Forest Labs, gets the image back, and posts it in the chat. That's three steps. That's the whole architecture."
+> "Here's the whole thing. User types a command in Discord. The bot catches it, sends the prompt to the FLUX API, gets the image back, posts it in chat. Three steps. That's the entire architecture."
 
 **ON-SCREEN TEXT** (lower third):
 ```
@@ -300,12 +300,12 @@ That's it. Three steps.
 **VISUAL:** Screen recording — browser. Navigate to `api.bfl.ai`.
 
 **VO:**
-> "Step one: get a FLUX API key. Head to api.bfl.ai, sign up — it takes about thirty seconds..."
+> "Step one: get a FLUX API key. Head to api.bfl.ai, sign up — takes about thirty seconds…"
 
 **VISUAL:** Show the sign-up / dashboard briefly. Blur or cover the actual API key, but show the "Copy" button being clicked.
 
 **VO:**
-> "...grab your API key, and you're ready. Now let me put some numbers on this — because the pricing is kind of absurd."
+> "…grab your API key, and you're set. Now let me put some numbers on this — because the pricing is kind of wild."
 
 **VISUAL:** Screen recording — show the BFL API dashboard with actual usage stats (or a staged version). Highlight the cost column.
 
@@ -320,7 +320,7 @@ That's $0.03 per image.
 ```
 
 **VO:**
-> "I generated forty-seven images while making this video. Total cost: a dollar forty-one. Three cents an image. For context — a single stock photo on Shutterstock starts at four bucks. A Canva Pro subscription is thirteen a month. You could generate four hundred images for the same price."
+> "I generated forty-seven images making this video. Total cost: a dollar forty-one. Three cents per image. For context — one stock photo on Shutterstock starts at four bucks. Canva Pro is thirteen a month. Forty-seven images for a dollar forty-one."
 
 **ON-SCREEN TEXT** (comparison graphic — clean split):
 ```
@@ -335,7 +335,7 @@ Hiring a designer: $50-200 per graphic
 *Hold 3 seconds.*
 
 **VO:**
-> "And that's with FLUX.2 Pro. If you use Klein, it's a fraction of a cent — sub-second generation at fourteen-thousandths of a dollar per image. It's practically free."
+> "And that's Pro pricing. Klein is a fraction of a cent — sub-second generation at $0.014 per image. Basically free."
 
 ---
 
@@ -346,7 +346,7 @@ Hiring a designer: $50-200 per graphic
 **VISUAL:** VS Code, dark theme. Large font. File tree hidden. Just code.
 
 **VO:**
-> "The bot is written in Python. Let me show you the two pieces that matter."
+> "The bot is in Python. Two pieces of code matter."
 
 ---
 
@@ -375,7 +375,7 @@ async def generate_cmd(self, interaction: discord.Interaction, prompt: str, mode
 ```
 
 **VO:**
-> "Here's the generate command. The bot resolves which API key to use, grabs the user's style, merges it with the prompt, calls FLUX, and posts the image. That's the whole command. Fifteen lines."
+> "Here's the generate command. Resolve the API key, grab the user's style, merge it with the prompt, call FLUX, post the image. Fifteen lines. That's the whole command."
 
 *[Beat — let it breathe for 1 second]*
 
@@ -412,7 +412,7 @@ async def generate_image(api_key, prompt, *, model="pro", width=1440, height=102
 ```
 
 **VO:**
-> "You POST your prompt to the FLUX API. You poll until the image is ready. One function handles all four models. That's the entire integration."
+> "POST your prompt. Poll until the image is ready. One function handles all four models. That's it."
 
 **ON-SCREEN TEXT** (bold, centered, appears with a punch):
 ```
@@ -427,12 +427,12 @@ One function. Four models. That's it.
 **VISUAL:** Cut back to the Discord UI showing a `/setstyle` response and a generated image with the style footer visible.
 
 **VO:**
-> "The style system? Under the hood it's a database. Your style gets saved to your user ID. When you generate, it gets prepended to your prompt. The response is ephemeral — only you can see it, so your style stays private. A handful of lines. But for the user? It feels like magic."
+> "The style system? Under the hood, it's a database. Your style gets saved to your user ID. When you generate, it gets prepended to your prompt. The response is ephemeral — only you see it, so your style stays private. A few lines of code. But to the user? It feels like the bot knows them."
 
 **VISUAL:** Cut to face cam. You're smiling slightly.
 
 **VO:**
-> "That's the whole thing. Clean, readable Python. Any developer can understand it in ten minutes. But the output competes with tools people pay serious money for."
+> "That's the whole bot. Clean Python that any developer can read in ten minutes. But the output goes head-to-head with tools people pay real money for."
 
 ---
 
@@ -441,7 +441,7 @@ One function. Four models. That's it.
 **VISUAL:** VS Code — the `flux_api.py` file is open. You're on the `DEFAULT_MODEL` line.
 
 **VO:**
-> "And here's the thing — this is designed to be modified. Watch. Let's say I want every generation to default to Klein, the fastest model."
+> "And the whole thing is designed to be modified. Watch — let's say I want every generation to default to Klein, the fastest model."
 
 **VISUAL:** On camera, change `DEFAULT_MODEL = "pro"` to `DEFAULT_MODEL = "klein"` in the code. Save the file.
 
@@ -461,7 +461,7 @@ One function. Four models. That's it.
 *Hold 2 seconds.*
 
 **VO:**
-> "Under one second. From pressing enter to seeing the image. That's Klein."
+> "Under one second. Press enter, see the image. That's Klein."
 
 > **PRODUCTION NOTE:** If Klein quality looks notably different from Pro on camera, briefly acknowledge it: "Klein is faster — Pro gives you more detail. That's the tradeoff. Your users get to pick per generation."
 
@@ -474,7 +474,7 @@ Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, rem
 ```
 
 **VO:**
-> "You run one file. Nine slash commands sync automatically. And here's a nice detail — users can run `/mykey` to set their own personal API key, or the server admin can run `/setkey` to cover everyone. Either way works."
+> "One file to run. Nine slash commands sync automatically. Users can run `/mykey` to set their own API key, or the server admin runs `/setkey` to cover everyone. Both work."
 
 **VISUAL:** Quick montage of the bot being used by multiple "users" — different names, different styles, images landing in the chat one after another. Show Discord emoji reactions (🔥 ❤️ 😍) on the images. 3 seconds.
 
@@ -495,7 +495,7 @@ Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, rem
 > The point of this montage: prove it's not just YOU using it. It's a community.
 
 **VO:**
-> "Every user gets their own style. Their own creative identity. Their own API key if they want it. All in one shared space."
+> "Every user gets their own style. Their own creative fingerprint. Their own API key if they want it. All in one shared space."
 
 ---
 
@@ -508,7 +508,7 @@ Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, rem
 **VISUAL:** Face cam. Direct to camera. Calm, confident.
 
 **VO:**
-> "The full bot is open source. Every line of code you just saw — it's on GitHub, ready to clone. But you don't even have to go that far. Let me show you."
+> "The full bot is open source. Everything you just saw is on GitHub, ready to clone. But you don't even need to go that far."
 
 **VISUAL:** Screen recording — open the landing page in a browser. Show the full flow in one continuous take:
 1. The hero section loads ("Image generation for Discord")
@@ -520,7 +520,7 @@ Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, rem
 7. Type `/generate prompt: a sunset over mountains` — image appears
 
 **VO (over the screen recording):**
-> "Landing page. Click 'Add to Discord.' Pick your server. Set your API key. Generate. That's it — from zero to your first AI-generated image in under sixty seconds. No terminal. No code. No setup guide."
+> "Landing page. Click 'Add to Discord.' Pick your server. Set your API key. Generate. Zero to first image in under a minute. No terminal. No code."
 
 > **PRODUCTION NOTE:** This continuous flow is the money shot of the case study. Rehearse it. Get a clean, unbroken take. Time it — should be about 30 seconds.
 
@@ -531,17 +531,17 @@ Link in description ↓
 ```
 
 **VO:**
-> "If you want to self-host or customize — clone the repo, add your bot token, deploy to Railway, and you're live. If you just want to USE it — that landing page is all you need."
+> "If you want to self-host or customize — clone the repo, add your bot token, deploy to Railway, and you're live. If you just want to use it — the landing page is all you need."
 
 **VISUAL:** Cut — show the GitHub repo page briefly (screen recording). Show the README.
 
 **VO:**
-> "If you build something cool with this, tag Black Forest Labs — we genuinely want to see what you make. And if you want to go deeper — train your own custom styles, your own LoRAs — we've got guides for that too. Link in the description."
+> "If you build something cool with this, tag Black Forest Labs — they genuinely want to see what people make. And if you want to go deeper — custom styles, LoRA training — there are guides for that too. Links in the description."
 
 *[Beat]*
 
 **VO:**
-> "Alright. Go make something."
+> "Go make something."
 
 **VISUAL:** Hard cut to black. End card with subscribe button, video suggestions.
 

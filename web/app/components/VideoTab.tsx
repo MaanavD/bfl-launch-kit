@@ -1,11 +1,22 @@
+import AuthorNote from "./AuthorNote";
+
 const DISCORD_CLIENT_ID =
   process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID ?? "YOUR_CLIENT_ID";
 const DISCORD_INVITE = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&permissions=2147534848&scope=bot%20applications.commands`;
-const GITHUB_REPO = "https://github.com/MaanavD/flux-discord-bot";
+const GITHUB_REPO = "https://github.com/MaanavD/bfl-launch-kit/tree/main/bot";
 
 export default function VideoTab() {
   return (
     <article className="video-tab">
+      <AuthorNote label="Author's Note" heading="A video you'd actually publish">
+        <p>
+          A 7–9 minute screen-share walkthrough where I build and demo FluxBot — a Discord bot
+          powered by FLUX.2. Below is the full production plan: generated B-roll assets, script
+          timeline, bot features, and setup instructions. <strong>Audience:</strong> developers
+          who learn by watching, and the broader YouTube/social audience BFL wants to reach on launch day.
+        </p>
+      </AuthorNote>
+
       {/* ── FluxBot Landing ── */}
       <section className="hero video-hero">
         <div className="hero-text">
@@ -14,14 +25,15 @@ export default function VideoTab() {
             FLUX.2
           </p>
           <h1>
-            Image generation
+            AI image generation,
             <br />
-            for Discord
+            right in Discord
           </h1>
           <p className="hero-body">
-            A 7–9 minute video walkthrough building and demoing FluxBot — a
+            A 7–9 minute video where I build and demo FluxBot — a
             Discord bot that puts FLUX.2 image generation directly in your
-            server. Type a prompt, get an image back in seconds.
+            server. Type a prompt, get an image back in seconds. Open
+            source, ready to fork.
           </p>
           <div className="hero-actions">
             <a
@@ -53,11 +65,11 @@ export default function VideoTab() {
 
       {/* ── Image Gallery ── */}
       <section className="section" id="gallery">
-        <h2>Pre-generated FLUX.2 assets for the video</h2>
+        <h2>FLUX.2 assets generated for the video</h2>
         <p className="section-desc">
-          Every image below was generated with FLUX.2 via the BFL API — used as
-          B-roll throughout the video script. Total API cost:{" "}
-          <strong>$1.41</strong> for 47 images.
+          Every image below was generated with FLUX.2 via the BFL API. I used
+          these as B-roll throughout the video. Total cost:{" "}
+          <strong>$1.41</strong> for 47 images — about 3 cents each.
         </p>
 
         <h3>Hook Montage</h3>
@@ -68,7 +80,7 @@ export default function VideoTab() {
               alt="Cyberpunk samurai in rain"
               loading="lazy"
             />
-            <figcaption>Cyberpunk samurai — the hook hero image</figcaption>
+            <figcaption>Cyberpunk samurai, the hook hero image</figcaption>
           </figure>
           <figure>
             <img
@@ -84,7 +96,7 @@ export default function VideoTab() {
               alt="Product photo headphones"
               loading="lazy"
             />
-            <figcaption>Product photo — matte black headphones</figcaption>
+            <figcaption>Product photo: matte black headphones</figcaption>
           </figure>
         </div>
 
@@ -103,7 +115,7 @@ export default function VideoTab() {
               alt="Golden retriever on throne"
               loading="lazy"
             />
-            <figcaption>Royal portrait — golden retriever</figcaption>
+            <figcaption>Royal portrait: golden retriever</figcaption>
           </figure>
           <figure>
             <img
@@ -117,9 +129,9 @@ export default function VideoTab() {
 
         <h3>Style Comparison</h3>
         <p className="section-desc">
-          Same prompt — &ldquo;a lone knight crossing a stone bridge over a
-          chasm&rdquo; — two different user styles. This is the key demo beat
-          in the video.
+          Same prompt (&ldquo;a lone knight crossing a stone bridge over a
+          chasm&rdquo;), two different user styles. This is the key moment
+          in the video — proof that personal styles change everything.
         </p>
         <div className="image-grid image-grid--2">
           <figure>
@@ -152,7 +164,7 @@ export default function VideoTab() {
               alt="Dragon on skyscraper"
               loading="lazy"
             />
-            <figcaption>/generate demo — dragon in thunderstorm</figcaption>
+            <figcaption>/generate demo: dragon in thunderstorm</figcaption>
           </figure>
           <figure>
             <img
@@ -160,7 +172,7 @@ export default function VideoTab() {
               alt="Lighthouse in storm"
               loading="lazy"
             />
-            <figcaption>Klein speed demo — 0.8s generation</figcaption>
+            <figcaption>Klein speed demo: 0.8s generation</figcaption>
           </figure>
           <figure>
             <img
@@ -174,8 +186,8 @@ export default function VideoTab() {
 
         <h3>Community Montage</h3>
         <p className="section-desc">
-          Final montage proving it&apos;s not just one person using the bot — a
-          living creative community.
+          Closing montage showing it&apos;s not just one person using the bot —
+          it&apos;s a whole server generating together.
         </p>
         <div className="image-grid image-grid--4">
           <figure>
@@ -230,42 +242,42 @@ export default function VideoTab() {
           <div className="feature">
             <h3>Text to image</h3>
             <p>
-              Describe anything. FLUX.2 produces photorealistic images,
-              illustrations, and concept art in seconds.
+              Describe what you want. FLUX.2 handles photorealism,
+              illustrations, concept art — whatever the prompt calls for.
             </p>
           </div>
           <div className="feature">
             <h3>Restyle existing images</h3>
             <p>
-              Upload a photo and transform it. A sketch becomes a painting, a
-              selfie becomes anime, a snapshot becomes cinema.
+              Upload a photo and transform it. A phone selfie becomes anime.
+              A desk snapshot becomes a Vermeer painting. You get the idea.
             </p>
           </div>
           <div className="feature">
             <h3>Personal style presets</h3>
             <p>
               Each user saves their own style. Same prompt, different people,
-              completely different results.
+              totally different outputs.
             </p>
           </div>
           <div className="feature">
             <h3>Multiple models</h3>
             <p>
-              Switch between FLUX.2 Pro, Max, Klein, or Flex per generation.
-              Balance speed and quality on the fly.
+              Switch between Pro, Max, Klein, or Flex per generation.
+              Trade off speed vs. quality depending on what you need.
             </p>
           </div>
           <div className="feature">
             <h3>Bring your own key</h3>
             <p>
-              Each server uses its own BFL API key. You control usage and costs
-              directly.
+              Each server sets its own BFL API key. You control usage and
+              costs. Users can also set personal keys if they prefer.
             </p>
           </div>
           <div className="feature">
             <h3>Fully open source</h3>
             <p>
-              Fork it, modify it, self-host it. The entire bot is designed to
+              Fork it, modify it, self-host it. MIT licensed and designed to
               be extended.
             </p>
           </div>
