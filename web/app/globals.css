@@ -479,7 +479,8 @@ a {
   margin-right: -2rem;
 }
 
-.article-figure img {
+.article-figure img,
+.article-figure video {
   width: 100%;
   border-radius: 6px;
   border: 1px solid var(--border);
