@@ -110,7 +110,7 @@ Single-image quality is competitive across the top models. The real differentiat
   </table>
 </div>
 
-All three produce great images. The gap is in everything around generation: open weights you can self-host, exact hex color control, sub-second inference on consumer hardware, and four model tiers to match any workload. FLUX.2 is the only model that ships all of it.
+While all models provide great generation, the FLUX.2 line is meant to meet all your needs! Open weights you can self-host, exact hex color control, sub-second inference on consumer hardware, and four model tiers to match any workload. FLUX.2 is the only provider that ships all of it.
 
 ---
 

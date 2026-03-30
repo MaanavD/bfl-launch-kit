@@ -16,9 +16,9 @@ export default function VideoTab() {
       <AuthorNote label="Author's Note" heading="Reaching the audience a tutorial can't">
         <p>
           A written tutorial converts developers who learn by reading. This video captures
-          everyone else - the YouTube audience, the social scrollers, the developer who
-          won&apos;t clone a repo but will watch a demo and think "I want that in my
-          server." It&apos;s the piece of the adoption funnel that gives FLUX.2 reach beyond
+          everyone else - the YouTube audience, the social scrollers, the person who
+          won't clone a repo but will watch a demo and think "I want that in my
+          server." It's the piece of the adoption funnel that gives FLUX.2 reach beyond
           the developer audience, and FluxBot gives them a zero-friction way to
           make their first generation without touching a terminal.
         </p>

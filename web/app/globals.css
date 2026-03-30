@@ -401,6 +401,66 @@ a {
   text-align: center;
 }
 
+/* ── Run-mode Tabs (pure CSS, inside prose) ── */
+
+.run-tabs {
+  position: relative;
+  margin: 1rem 0 1.5rem;
+}
+
+.run-tabs > input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.run-tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.run-tabs-nav label {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.run-tabs-nav label:hover {
+  color: var(--text);
+}
+
+/* Active label highlighting */
+#run-basic:checked ~ .run-tabs-nav label[for="run-basic"],
+#run-face:checked ~ .run-tabs-nav label[for="run-face"],
+#run-file:checked ~ .run-tabs-nav label[for="run-file"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Hide all panels by default */
+.run-tab-panel {
+  display: none;
+}
+
+/* Show selected panel */
+#run-basic:checked ~ #panel-basic,
+#run-face:checked ~ #panel-face,
+#run-file:checked ~ #panel-file {
+  display: block;
+}
+
+/* Reset prose pre margin inside tabs */
+.run-tab-panel pre {
+  margin: 0;
+}
+
 /* ── CTA Block ── */
 
 .cta-block {

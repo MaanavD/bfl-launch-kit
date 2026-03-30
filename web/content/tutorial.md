@@ -86,7 +86,7 @@ BFL_API_KEY=your_bfl_api_key_here
 
 ### Step 2: The prompt builder
 
-No LLM here - just three style templates that wrap your description. Here's the core of `src/promptGenerator.js`:
+Easy start. A few styles that wrap your description. Here's the core of `src/promptGenerator.js`:
 
 ```js
 const STYLE_TEMPLATES = [
@@ -111,7 +111,7 @@ export function buildPrompts(description, hasFace = false, titleText = null) {
 }
 ```
 
-Three styles (Cinematic, Graphic, Abstract), each wrapping your description differently. When `--text` is passed, text-enabled templates tell the model what title to render and where. The `sanitizeForImageGen` function converts brand names, instructional phrasing, and text-adjacent terms into visual equivalents for simplicity.
+Three styles (Cinematic, Graphic, Abstract), each wrapping the description differently. When you pass `--text`, the templates tell the model what title to render and where. The `sanitizeForImageGen` function converts brand names, instructional phrasing, and text-adjacent terms into visual equivalents for simplicity.
 
 ### Step 3: Calling the FLUX.2 API
 
@@ -126,8 +126,8 @@ const endpoint = `https://api.bfl.ai/v1/${MODELS[model]}`;
 
 const payload = {
   prompt,
-  width: 1344,
-  height: 768,
+  width: 1344,   // 16:9 YouTube thumbnail ratio — any aspect ratio works,
+  height: 768,   // up to 4MP total (e.g. 2048x2048, 1440x2048, etc.)
 };
 
 // If a face reference is provided, activate character consistency
@@ -167,37 +167,34 @@ for (let poll = 0; poll < MAX_POLLS; poll++) {
 }
 ```
 
-All 3 run concurrently via `Promise.all` and we just wait for the last one to finish.
+All 3 calls run concurrently via `Promise.all` and we just wait for the last one to finish.
 
 ### Step 5: Run it
 
-**Basic:**
-
-```bash
-node src/index.js "How to write a short story that actually gets finished. We break down the process from first spark to final draft: finding ideas worth exploring, building characters that feel real, structuring scenes that move, and editing without losing your voice."
-```
-
-**With a face (put yourself in the thumbnails):**
-
-<div style="display: flex; gap: 1.5rem; align-items: center; margin: 1rem 0 1.5rem">
-  <img
-    src="/tutorial/headshot.jpg"
-    alt="Example headshot used as a face reference"
-    style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0"
-    loading="lazy"
-  />
-  <p style="margin: 0; font-size: 0.9375rem">Pass a headshot via <code>--face</code> and FLUX.2 keeps that person consistent across all three thumbnail directions.</p>
+<div class="run-tabs">
+  <input type="radio" name="run-mode" id="run-basic" checked />
+  <input type="radio" name="run-mode" id="run-face" />
+  <input type="radio" name="run-mode" id="run-file" />
+  <div class="run-tabs-nav">
+    <label for="run-basic">Basic</label>
+    <label for="run-face">With a face</label>
+    <label for="run-file">From a file</label>
+  </div>
+  <div class="run-tab-panel" id="panel-basic">
+    <pre><code class="language-bash">node src/index.js "How to write a short story that actually gets finished. We break down the process from first spark to final draft: finding ideas worth exploring, building characters that feel real, structuring scenes that move, and editing without losing your voice."</code></pre>
+  </div>
+  <div class="run-tab-panel" id="panel-face">
+    <div style="display: flex; gap: 1.5rem; align-items: center; margin: 0 0 1rem">
+      <img src="/tutorial/headshot.jpg" alt="Example headshot" style="width: 64px; height: 64px; object-fit: cover; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0" loading="lazy" />
+      <p style="margin: 0; font-size: 0.9375rem">Pass a headshot via <code>--face</code> and FLUX.2 keeps that person consistent across all three directions.</p>
+    </div>
+    <pre><code class="language-bash">node src/index.js "How to write a short story that actually gets finished" --face headshot.jpg</code></pre>
+  </div>
+  <div class="run-tab-panel" id="panel-file">
+    <p style="margin: 0 0 0.75rem; font-size: 0.9375rem">Pipe in a longer description from a text file:</p>
+    <pre><code class="language-bash">node src/index.js --file video-description.txt --face headshot.jpg</code></pre>
+  </div>
 </div>
-
-```bash
-node src/index.js "How to write a short story that actually gets finished" --face headshot.jpg
-```
-
-**From a file** (for longer descriptions):
-
-```bash
-node src/index.js --file video-description.txt --face headshot.jpg
-```
 
 The CLI saves three thumbnails to `output/` and opens the viewer automatically - three distinct directions, and if you used `--face`, *you're in all of them*.
 
@@ -226,7 +223,7 @@ FLUX.2's text rendering integrates typography into the scene - matching lighting
 ## Where to go from here
 
 - **Automate it.** The repo ships a `pipeline/` folder that wires the same generation logic into an automated YouTube workflow - new video goes up, thumbnails generate, and one gets set as the live thumbnail via the YouTube API. [Setup instructions →](https://github.com/MaanavD/bfl-launch-kit/tree/main/pipeline)
-- **Try `--model max`** for highest quality output at the cost of longer generation time.
+- **Try `--model max`** for highest quality output.
 - **Read the API docs.** One endpoint covers text-to-image and editing. Parameters, model options, and advanced features are all at [docs.bfl.ai](https://docs.bfl.ai/).
 
 Alright, enough reading - let's ship. Grab a key and let's get off to the races!

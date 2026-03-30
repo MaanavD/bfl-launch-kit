@@ -26,7 +26,7 @@ This plan targets one primary metric: **signup → first API call rate.** The <s
 <ol class="launch-sequence">
   <li><strong>T-0: Blog + credit grant go live.</strong> HN, Twitter/X, r/MachineLearning, r/StableDiffusion. $5 base credits for all signups, $10 with a promo code. Influencers informed 1 week prior with credits and unique codes to publish simultaneously.</li>
   <li><strong>T+2h: Video drops.</strong> Rides the discussion wave. Short clips (style comparison, Klein speed demo, restyle) cut for standalone social posts throughout the day.</li>
-  <li><strong>T+4h: Tutorial published.</strong> Where curious readers land once they're ready to build on the platform.</li>
+  <li><strong>T+4h: Tutorial published.</strong> Where curious readers land once they're ready to build on the platform. We pin a <a href="#launch-challenge">48 hour challenge</a> to this, getting people building.</li>
 </ol>
 
 ---
@@ -37,9 +37,9 @@ This plan targets one primary metric: **signup → first API call rate.** The <s
 
 **Per-channel promo codes** for attribution (e.g., `FIRE-FLUX`, `FLUXTUTORIAL`). One code per channel and partner so the growth team knows where we're converting.
 
-**"First API call" bonus:** +$5 after a user's first successful generation. Rewards action over interest.
+**"First API call" bonus:** +$5 after first successful generation. Rewards action, not only interest.
 
-**Referral credits:** $5 per referred signup that makes a first (paid) API call. Turns evangelists into activations.
+**Referral credits:** $5 per referred signup that makes a first (paid) API call. Turns evangelists into activation on our APIs - this would be mostly unique to our platform.
 
 ---
 
@@ -58,7 +58,7 @@ Secondary signals: promo code redemption by channel, GitHub stars/forks on FluxB
 ## Given more time
 
 - **"Try it now" playground** on docs.bfl.ai - one image, <strong>no account</strong>, powered by the credit grant. Email capture comes after the "wow" moment (like FLUX on HuggingFace)
-- **48-hour launch challenge** - build with FLUX.2, win credits ($100 for top 10, $500 for first place). Best consumer workflow wins! Costs almost nothing and generates a wave of UGC.
+- <span id="launch-challenge"></span>**48-hour launch challenge** - build with FLUX.2, win credits ($100 for top 10, $500 for first place). Best consumer workflow wins! Costs almost nothing and generates a wave of UGC.
 - **Partner launch kits** - pre-written announcements, model cards, integration guides with per-partner promo codes (this will help us identify where we get the most traffic). Coordinated ecosystem launch.
 - **Follow-up content** - Style training, multi-style workflows, power-user guides. The natural sequel once signups are flowing.
 

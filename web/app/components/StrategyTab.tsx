@@ -10,7 +10,7 @@ export default function StrategyTab() {
           BFL can get attention, and the last launch proved that. The hard part is
           converting sign-ups into developers who actually build on the platform.
           That's the specific problem I'm here to solve, and every deliverable
-          below is designed around it.
+          on this site is designed around it.
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

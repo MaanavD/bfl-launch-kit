@@ -42,7 +42,22 @@ export default function MarkdownArticle({ content }: MarkdownArticleProps) {
       return `<pre><code>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>`;
     };
 
-    return marked(content, { renderer }) as string;
+    let result = marked(content, { renderer }) as string;
+
+    // Highlight raw <pre><code class="language-*"> blocks that bypassed marked's code renderer
+    result = result.replace(
+      /<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g,
+      (_match, lang, code) => {
+        const supported = hl.getLoadedLanguages();
+        if (supported.includes(lang as never)) {
+          const decoded = code.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+          return hl.codeToHtml(decoded, { lang, theme: "github-dark" });
+        }
+        return _match;
+      }
+    );
+
+    return result;
   }, [content, hl]);
 
   return (

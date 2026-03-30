@@ -1,6 +1,7 @@
+import { existsSync } from "node:fs";
 import { fetchVideoDetails, setThumbnail } from "./youtubeClient.js";
 import { buildPrompts, STYLE_NAMES } from "./promptTemplates.js";
-import { generateAllImages } from "./bflClient.js";
+import { generateAllImages, encodeImageToBase64 } from "./bflClient.js";
 
 /**
  * Runs the full thumbnail pipeline for a YouTube video:
@@ -14,9 +15,10 @@ import { generateAllImages } from "./bflClient.js";
  * @param {number} [options.pick=0] - Index of the style variant to set (0=Cinematic, 1=Graphic, 2=Abstract).
  * @param {boolean} [options.setThumbnail=true] - Whether to push the thumbnail to YouTube.
  * @param {string|null} [options.customDescription=null] - Override the YouTube description with a custom one.
+ * @param {string|null} [options.facePath=null] - Path to a face reference image for character consistency.
  * @returns {Promise<{videoId: string, title: string, style: string, images: Buffer[]}>}
  */
-export async function runPipeline(videoId, { pick = 0, setThumbnail: shouldSet = true, customDescription = null } = {}) {
+export async function runPipeline(videoId, { pick = 0, setThumbnail: shouldSet = true, customDescription = null, facePath = null } = {}) {
   console.log(`\n🎬 Pipeline started for video: ${videoId}`);
 
   // 1. Fetch video details
@@ -33,9 +35,17 @@ export async function runPipeline(videoId, { pick = 0, setThumbnail: shouldSet =
   console.log(`🎨 Built ${prompts.length} style prompts: ${STYLE_NAMES.join(", ")}`);
 
   // 3. Generate images via BFL
-  console.log(`⏳ Generating ${prompts.length} images via FLUX.2...`);
+  let faceBase64 = null;
+  if (facePath) {
+    if (!existsSync(facePath)) {
+      throw new Error(`Face image not found: ${facePath}`);
+    }
+    faceBase64 = await encodeImageToBase64(facePath);
+    console.log(`\ud83d\udc64 Face reference: ${facePath}`);
+  }
+  console.log(`\u23f3 Generating ${prompts.length} images via FLUX.2...`);
   const startTime = performance.now();
-  const images = await generateAllImages(prompts);
+  const images = await generateAllImages(prompts, faceBase64);
   const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
   console.log(`✅ ${images.length} images generated (${elapsed}s)`);
 
