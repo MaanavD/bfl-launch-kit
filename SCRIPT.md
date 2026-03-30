@@ -18,13 +18,13 @@
 
 ## PRE-PRODUCTION NOTES
 
-**Runtime target:** 7-9 minutes (sweet spot for YouTube retention at this production level)
+**Runtime target:** 6-7 minutes (tight, high-energy - no dead air, no code on screen)
 
 **Pacing philosophy:** This is NOT a coding tutorial. It's a product demo with just enough "under the hood" to make people feel like they could build it. Think Apple keynote energy meets casual Discord hang.
 
 **Visual language:**
 - Discord UI = always dark mode
-- Code on screen = VS Code, dark theme, large font (16pt+), only show 10-15 lines max at a time
+- No code on screen - this is a product demo, not a coding tutorial. The written tutorial covers implementation.
 - FLUX outputs = always fullscreen for 2-3 seconds so viewers absorb the quality
 - Transitions = hard cuts (no fades, no dissolves - keeps energy up)
 
@@ -304,6 +304,12 @@ That's it. Three steps.
 
 **VISUAL:** Show the sign-up / dashboard briefly. Blur or cover the actual API key, but show the "Copy" button being clicked.
 
+**ON-SCREEN TEXT** (clickable card / end-screen-style annotation, bottom-right, stays 5 seconds):
+```
+Ready to try it yourself?
+api.bfl.ai - free tier, no credit card
+```
+
 **VO:**
 > "…grab your API key, and you're set. Now let me put some numbers on this - because the pricing is kind of wild."
 
@@ -339,116 +345,28 @@ Hiring a designer: $50-200 per graphic
 
 ---
 
-### 3C: The Bot Code (1.5 minutes) [5:00 - 6:30]
+### 3C: Under the Hood (45 seconds) [5:00 - 5:45]
 
-> **PRODUCTION NOTE:** Two code snippets only. The style system is explained via VO over Discord UI instead. Keep it FAST - the audience is non-technical. We're proving "this is simple" not teaching them Python.
-
-**VISUAL:** VS Code, dark theme. Large font. File tree hidden. Just code.
-
-**VO:**
-> "The bot is in Python. Two pieces of code matter."
-
----
-
-**SNIPPET 1: The /generate command**
-
-**VISUAL:** Show this code block on screen - this is from `/bot/cogs/generate.py`. Highlight lines as you talk about them (use a subtle yellow glow or underline effect in editing).
-
-```python
-@app_commands.command(name="generate", description="Generate an image from a text prompt")
-async def generate_cmd(self, interaction: discord.Interaction, prompt: str, model: str = "pro"):
-    api_key = await self.storage.resolve_api_key(interaction.user.id, interaction.guild_id)
-    await interaction.response.defer()
-
-    # Merge user style with prompt
-    user_style = await self.storage.get_user_style(interaction.user.id)
-    full_prompt = f"{user_style}, {prompt}" if user_style else prompt
-
-    image_bytes = await generate_image(api_key, full_prompt, model=model)
-
-    file = discord.File(BytesIO(image_bytes), filename="fluxbot.jpg")
-    embed = discord.Embed(color=0x7C3AED)
-    embed.set_author(name=f"{interaction.user.display_name}'s generation")
-    embed.description = f"**Prompt:** {prompt}"
-    embed.set_image(url="attachment://fluxbot.jpg")
-    await interaction.followup.send(embed=embed, file=file)
-```
-
-**VO:**
-> "Here's the generate command. Resolve the API key, grab the user's style, merge it with the prompt, call FLUX, post the image. Fifteen lines. That's the whole command."
-
-*[Beat - let it breathe for 1 second]*
-
-**VO:**
-> "And the API call?"
-
----
-
-**SNIPPET 2: The FLUX API call**
-
-**VISUAL:** New code block, same style - this is from `/bot/flux_api.py`.
-
-```python
-async def generate_image(api_key, prompt, *, model="pro", width=1440, height=1024):
-    endpoint = MODELS.get(model)  # e.g. "flux-2-pro-preview"
-    url = f"https://api.bfl.ai/v1/{endpoint}"
-
-    async with aiohttp.ClientSession() as session:
-        async with session.post(url,
-            headers={"x-key": api_key},
-            json={"prompt": prompt, "width": width, "height": height}
-        ) as resp:
-            data = await resp.json()
-
-        polling_url = data["polling_url"]
-
-        # Poll until ready
-        while True:
-            await asyncio.sleep(1)
-            async with session.get(polling_url, headers={"x-key": api_key}) as resp:
-                result = await resp.json()
-            if result["status"] == "Ready":
-                return await _download_image(session, result["result"]["sample"])
-```
-
-**VO:**
-> "POST your prompt. Poll until the image is ready. One function handles all four models. That's it."
-
-**ON-SCREEN TEXT** (bold, centered, appears with a punch):
-```
-One function. Four models. That's it.
-```
-*Hold 2 seconds.*
-
----
-
-**THE STYLE SYSTEM (VO-only, no code on screen)**
+> **PRODUCTION NOTE:** No code on screen. The written tutorial covers implementation in depth - this video stays in demo/product territory. We're showing that the bot is simple and customizable, not teaching Python.
 
 **VISUAL:** Cut back to the Discord UI showing a `/setstyle` response and a generated image with the style footer visible.
 
 **VO:**
-> "The style system? Under the hood, it's a database. Your style gets saved to your user ID. When you generate, it gets prepended to your prompt. The response is ephemeral - only you see it, so your style stays private. A few lines of code. But to the user? It feels like the bot knows them."
+> "Under the hood: clean Python, fully open source. Your style gets saved to your user ID. When you generate, the bot merges it with your prompt automatically. The response is private - only you see your style config. A handful of functions. But to the user? It feels like the bot knows them."
 
-**VISUAL:** Cut to face cam. You're smiling slightly.
+**VISUAL:** Cut to face cam. Casual, confident.
 
 **VO:**
-> "That's the whole bot. Clean Python that any developer can read in ten minutes. But the output goes head-to-head with tools people pay real money for."
+> "And because it's open source, you can customize the whole thing for your server's workflow. Change default models. Add new commands. Swap in different aspect ratios. The code is readable enough that any developer can fork it and make it theirs in an afternoon. But let me show you the part I'm most excited about."
 
 ---
 
-### 3D: Live Modification + Going Live (45 seconds) [6:30 - 7:15]
+### 3D: The Speed Demo (30 seconds) [5:45 - 6:15]
 
-**VISUAL:** VS Code - the `flux_api.py` file is open. You're on the `DEFAULT_MODEL` line.
-
-**VO:**
-> "And the whole thing is designed to be modified. Watch - let's say I want every generation to default to Klein, the fastest model."
-
-**VISUAL:** On camera, change `DEFAULT_MODEL = "pro"` to `DEFAULT_MODEL = "klein"` in the code. Save the file.
-
-**VO:**
-> "One line. That's it. Now let's see how fast Klein is."
-
-**VISUAL:** Switch to Discord. Type `/generate prompt: a lighthouse in a storm`.
+**VISUAL:** Discord. You switch the model picker to **Klein** and type:
+```
+/generate prompt: a lighthouse in a storm  model: Klein
+```
 
 > **PRODUCTION NOTE - TIMER OVERLAY:** Add a visible stopwatch/timer overlay in the top-right corner that starts counting when you press enter and stops when the image appears. Use a clean, minimal design - just white digits on a semi-transparent dark background. Something like "0.0s" counting up. When it lands, freeze the number (e.g., "0.8s") and pulse it briefly. This single number becomes the shareable factoid.
 
@@ -461,20 +379,11 @@ One function. Four models. That's it.
 *Hold 2 seconds.*
 
 **VO:**
-> "Under one second. Press enter, see the image. That's Klein."
+> "Under one second. Klein is FLUX.2's speed model - press enter, see the image. Pro gives you more detail when you need it. Your users pick per generation."
 
-> **PRODUCTION NOTE:** If Klein quality looks notably different from Pro on camera, briefly acknowledge it: "Klein is faster - Pro gives you more detail. That's the tradeoff. Your users get to pick per generation."
+---
 
-**VISUAL:** Terminal window. Show the bot starting up:
-
-```
-$ python main.py
-FluxBot is online! Connected to 3 servers.
-Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, removekey, mykey, removemykey
-```
-
-**VO:**
-> "One file to run. Nine slash commands sync automatically. Users can run `/mykey` to set their own API key, or the server admin runs `/setkey` to cover everyone. Both work."
+### 3E: Community (30 seconds) [6:15 - 6:45]
 
 **VISUAL:** Quick montage of the bot being used by multiple "users" - different names, different styles, images landing in the chat one after another. Show Discord emoji reactions (🔥 ❤️ 😍) on the images. 3 seconds.
 
@@ -501,7 +410,7 @@ Synced 9 commands: generate, restyle, setstyle, mystyle, clearstyle, setkey, rem
 
 ## SECTION 4: THE CALL TO ACTION + LANDING PAGE FLOW
 
-**[7:45 - 8:30]**
+**[6:45 - 7:30]**
 
 ---
 
@@ -593,13 +502,10 @@ FLUX.2 API → api.bfl.ai
 5. **Discord demo - multiple users generating** (use friends/alt accounts - show emoji reactions on outputs)
 6. **Browser - api.bfl.ai sign-up and API key copy** (blur actual key)
 7. **Browser - BFL API dashboard with usage/cost stats** (show the $1.41 total or your real numbers)
-8. **VS Code - two code snippets** (pre-format: `cogs/generate.py` and `flux_api.py`)
-9. **VS Code - live modification** (change DEFAULT_MODEL from "pro" to "klein", save)
-10. **Discord - Klein speed demo** (show near-instant generation - ADD TIMER OVERLAY IN EDITING)
-11. **Terminal - bot startup** (run `python main.py`, show success message with 9 commands)
-12. **Browser - GitHub repo page** (show README)
-13. **Browser - Landing page → Add to Discord → /setkey → first /generate** (ONE CONTINUOUS TAKE - this is the most important recording)
-14. **Discord - community montage** (friends generating a burst of images, emoji reactions, casual messages)
+8. **Discord - Klein speed demo** (show near-instant generation with model picker - ADD TIMER OVERLAY IN EDITING)
+9. **Discord - community montage** (friends generating a burst of images, emoji reactions, casual messages)
+10. **Browser - GitHub repo page** (show README)
+11. **Browser - Landing page → Add to Discord → /setkey → first /generate** (ONE CONTINUOUS TAKE - this is the most important recording)
 
 ### Talking Head Shots
 
@@ -610,14 +516,13 @@ Film all VO lines that are marked "face cam" in one session. Shoot in order. Wea
 - **Background music:** Lo-fi electronic or minimal synthwave. Drops to ~20% volume during code explanations, back to ~60% during montages and transitions.
 - **SFX - keyboard clicks:** Subtle mechanical keyboard sounds when showing Discord typing. Don't overdo it - 2-3 keystrokes, not every letter.
 - **SFX - image reveal:** A soft, satisfying "click" or "whoosh" when each generated image appears. Keep it consistent.
-- **No SFX during code sections.** Let the visuals and voice carry it.
+- **No SFX during face-cam VO sections.** Let the visuals and voice carry it.
 
 ### Editing Notes
 
 - **Cuts:** Hard cuts only. No dissolves or fades except the final fade to black. This keeps energy high and matches the "modern tech" vibe.
 - **Text animations:** All on-screen text should appear with a quick snap (0.1s ease-out). No bouncing, no spinning. Professional.
 - **Image reveals:** When a generated image appears fullscreen, use a subtle scale animation: starts at 97% → eases to 100% over 0.3 seconds. Creates a feeling of the image "landing."
-- **Code highlights:** When highlighting a specific line of code, use a yellow/gold semi-transparent bar behind the line. Very subtle. Don't use red circles or arrows.
 - **Pacing rule:** No single shot should last longer than 8 seconds without either a visual change, a text overlay, or a cut. This keeps retention.
 
 ---

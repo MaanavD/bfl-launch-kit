@@ -322,18 +322,6 @@
       <p class="header-topic" id="topic">Loading…</p>
     </header>
 
-    <!-- Comparison grid -->
-    <section class="comparison-section" aria-label="Side-by-side comparison">
-      <p class="section-label">Comparison</p>
-      <div class="comparison-img-wrap">
-        <img
-          src="output/comparison.jpg"
-          alt="All three thumbnail styles side by side"
-          onerror="this.closest('.comparison-img-wrap').style.display='none'"
-        >
-      </div>
-    </section>
-
     <!-- Individual thumbnails -->
     <section class="thumbnails-section" aria-label="Individual thumbnails">
       <p class="section-label">Directions</p>
@@ -360,8 +348,19 @@
         if (!res.ok) throw new Error("not found");
         return await res.json();
       } catch {
+        // fetch() fails on file:// protocol — try to detect output via image load
         return null;
       }
+    }
+
+    /** When metadata.json isn't reachable (file:// origin), probe for images directly. */
+    function probeImages() {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = "output/thumbnail_1.jpg";
+      });
     }
 
     function escAttr(str) {
@@ -394,6 +393,31 @@
       const metaEl   = document.getElementById("meta");
 
       if (!data) {
+        // No metadata — could be file:// CORS or genuinely no output
+        const hasImages = await probeImages();
+        if (hasImages) {
+          // Images exist but fetch failed (file:// protocol) — render without metadata
+          topicEl.textContent = "Output preview (open via a local server for full details)";
+          STYLES.forEach((style, i) => {
+            const card = document.createElement("article");
+            card.className = "thumb-card";
+            card.innerHTML = `
+              <img
+                src="output/thumbnail_${i + 1}.jpg"
+                alt="${escAttr(style.name)} direction"
+                loading="lazy"
+              >
+              <div class="card-info">
+                <div class="card-header">
+                  <span class="style-badge style-badge--${style.cls}">${escHTML(style.name)}</span>
+                </div>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+          return;
+        }
+
         topicEl.textContent = "No results yet";
         container.innerHTML = `<div class="state-error">No output found. Run <code>node src/index.js "Your video description"</code> first, then refresh.</div>`;
         return;

@@ -26,31 +26,63 @@ function sanitizeForImageGen(description) {
     [/\bGitHub\b/gi, "code repository"],
     [/\bVercel\b/gi, "deployment platform"],
     [/\bTED\b/g, "conference"],
+    // Writing/literary terms that cue text rendering
+    [/\bwrit(e|ing|ten)\b/gi, "creat$1"],
+    [/\bshort stor(y|ies)\b/gi, "creative journey"],
+    [/\bstor(y|ies)\b/gi, "narrative"],
+    [/\b(first|final|rough)\s+draft\b/gi, "$1 iteration"],
+    [/\bdraft\b/gi, "iteration"],
+    [/\bediting\b/gi, "refining"],
+    [/\beditor\b/gi, "craftsperson"],
+    [/\bmanuscript\b/gi, "creative work"],
+    [/\bpublish(ing|ed)?\b/gi, "releas$1"],
+    [/\bblog\s*post\b/gi, "creative piece"],
+    [/\bnewsletter\b/gi, "publication"],
+    [/\bheadline\b/gi, "hook"],
+    [/\bcopywriting\b/gi, "persuasion craft"],
+    [/\bfiction\b/gi, "imaginative work"],
+    [/\bnovel\b/gi, "long-form creation"],
+    [/\bchapter\b/gi, "section"],
+    [/\bsentence\b/gi, "expression"],
+    [/\bparagraph\b/gi, "passage"],
+    [/\bword(s)?\b/gi, "element$1"],
+    [/\breading\b/gi, "absorbing"],
+    [/\breader(s)?\b/gi, "audience"],
   ];
   let cleaned = description;
   for (const [pattern, replacement] of replacements) {
     cleaned = cleaned.replace(pattern, replacement);
   }
+  // Strip instructional phrasing that reads like a title/headline
+  cleaned = cleaned
+    .replace(/^how to\b/i, "The process of")
+    .replace(/\bhow to\b/gi, "the process of")
+    .replace(/^\d+\s+(ways?|tips?|steps?|reasons?|things?)\b/gi, "a collection of ideas about")
+    .replace(/^(the )?(ultimate |complete |definitive )?(guide|tutorial|walkthrough)\b/gi, "an exploration")
+    .replace(/\bstep[- ]by[- ]step\b/gi, "methodical");
   return cleaned;
 }
 
 // --- Text-free templates (for klein) ---
+// Per the BFL prompting guide: write like a novelist, lead with subject,
+// describe lighting explicitly. Never mention "text" or "writing" — even
+// negatively — as it primes the model to render text artifacts.
 
 const STYLE_TEMPLATES = [
   {
     name: "Cinematic",
     wrap: (desc, hasFace) =>
-      `TEXT-FREE IMAGE. A photorealistic, cinematic YouTube thumbnail. Dramatic side lighting, shallow depth of field, shot on 35mm film. ${hasFace ? "The person from the reference image is the main subject, positioned in the right third of the frame. " : ""}The scene visually represents: ${desc}. Rich color grading, high contrast, bold composition. The image contains NO text, NO titles, NO captions, NO watermarks, NO logos, NO letters, NO numbers, NO words, NO writing of any kind anywhere in the image.`,
+      `A photorealistic, cinematic scene shot on 35mm film. ${hasFace ? "The person from the reference image is the main subject, positioned in the right third of the frame. " : ""}The scene visually represents: ${desc}. Dramatic side lighting with shallow depth of field, rich warm color grading, high contrast. Bold composition with clean negative space. Smooth gradients and soft bokeh in the background.`,
   },
   {
     name: "Graphic",
     wrap: (desc, hasFace) =>
-      `TEXT-FREE IMAGE. A bold, flat-design YouTube thumbnail with strong geometric shapes in a split-complementary color scheme. ${hasFace ? "The person from the reference image is featured as a stylized illustration, centered and filling the frame. " : ""}The concept shown is: ${desc}. Vector-art influenced, clean lines, high contrast color blocks, top-down or isometric perspective. The image contains NO text, NO titles, NO captions, NO watermarks, NO logos, NO letters, NO numbers, NO words, NO writing of any kind anywhere in the image.`,
+      `A vibrant pop-art scene with bold saturated colors and strong graphic contrast. ${hasFace ? "The person from the reference image is the main subject, rendered in a stylized pop-art portrait style, centered and filling the frame. " : ""}The concept shown is: ${desc}. Thick outlines, halftone dot patterns, duotone color blocking. Punchy complementary colors like orange and teal. Clean composition with a single focal point and large areas of flat color.`,
   },
   {
     name: "Abstract",
     wrap: (desc, hasFace) =>
-      `TEXT-FREE IMAGE. A surreal, conceptual YouTube thumbnail using metaphorical imagery and symbolic objects. ${hasFace ? "The person from the reference image floats in a dreamlike environment. " : ""}A visual metaphor for: ${desc}. Dreamlike wide-angle composition, glowing ethereal lighting, flowing organic shapes, striking warm-to-cool color gradient. The image contains NO text, NO titles, NO captions, NO watermarks, NO logos, NO letters, NO numbers, NO words, NO writing of any kind anywhere in the image.`,
+      `A surreal, dreamlike scene using metaphorical imagery and symbolic objects. ${hasFace ? "The person from the reference image floats in a dreamlike environment. " : ""}A visual metaphor for: ${desc}. Wide-angle composition, glowing ethereal lighting, flowing organic shapes, striking warm-to-cool color gradient. Painterly and atmospheric with soft focus throughout.`,
   },
 ];
 

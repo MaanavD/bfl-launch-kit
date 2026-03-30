@@ -11,7 +11,7 @@ export default function BlogTab() {
           But sign-ups alone don't matter if they don't activate. So the post is structured
           to do both: make the case for FLUX.2, then give the reader a clear next action
           (tutorial, bot, or raw API) based on how they like to build. Every section funnels
-          toward that first API call, not just an account creation.
+          toward that first API call.
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

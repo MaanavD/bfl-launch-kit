@@ -87,30 +87,6 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <div className="nav-links">
-            <a
-              href="https://bfl.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              BFL
-            </a>
-            <a
-              href="https://docs.bfl.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Docs
-            </a>
-            <a
-              href="https://dashboard.bfl.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta"
-            >
-              Get API Key
-            </a>
-          </div>
         </nav>
       </header>
 

@@ -2,4 +2,5 @@ node_modules/
 .env
 output/*.jpg
 output/*.json
+output/*.html
 !output/.gitkeep

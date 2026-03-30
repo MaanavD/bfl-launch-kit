@@ -2,12 +2,14 @@ import { writeFile, mkdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { exec } from "node:child_process";
 
 // Ensure config validates env vars on import
 import "./config.js";
 import { buildPrompts } from "./promptGenerator.js";
 import { generateAllImages } from "./imageGenerator.js";
 import { createComparisonGrid } from "./gridCompositor.js";
+import { buildViewerHTML } from "./viewerTemplate.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "..", "output");
@@ -125,6 +127,10 @@ async function main() {
     JSON.stringify(metadata, null, 2)
   );
 
+  // Step 6: Generate self-contained viewer HTML
+  const viewerHTML = await buildViewerHTML(metadata);
+  await writeFile(join(OUTPUT_DIR, "viewer.html"), viewerHTML);
+
   // Done
   const totalTime = (
     (performance.now() - startPrompts) /
@@ -132,11 +138,15 @@ async function main() {
   ).toFixed(1);
 
   console.log(`\n✅ Done in ${totalTime}s! Output saved to output/\n`);
-  console.log(`   Comparison grid: output/comparison.jpg`);
-  console.log(`   Individual:      output/thumbnail_1.jpg`);
-  console.log(`                    output/thumbnail_2.jpg`);
-  console.log(`                    output/thumbnail_3.jpg`);
-  console.log(`   Viewer:          Open viewer.html in your browser\n`);
+  console.log(`   Thumbnails: output/thumbnail_1.jpg, thumbnail_2.jpg, thumbnail_3.jpg`);
+  console.log(`   Viewer:     output/viewer.html\n`);
+
+  // Auto-open the viewer in the default browser
+  const viewerPath = join(OUTPUT_DIR, "viewer.html");
+  const openCmd = process.platform === "win32" ? `start "" "${viewerPath}"`
+    : process.platform === "darwin" ? `open "${viewerPath}"`
+    : `xdg-open "${viewerPath}"`;
+  exec(openCmd);
 }
 
 main().catch((err) => {
