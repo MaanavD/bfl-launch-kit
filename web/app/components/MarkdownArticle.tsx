@@ -6,6 +6,7 @@ import type { Highlighter } from "shiki";
 
 interface MarkdownArticleProps {
   content: string;
+  className?: string;
 }
 
 let highlighterPromise: Promise<Highlighter> | null = null;
@@ -22,7 +23,7 @@ function getHighlighter() {
   return highlighterPromise;
 }
 
-export default function MarkdownArticle({ content }: MarkdownArticleProps) {
+export default function MarkdownArticle({ content, className = "prose" }: MarkdownArticleProps) {
   const [hl, setHl] = useState<Highlighter | null>(null);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function MarkdownArticle({ content }: MarkdownArticleProps) {
 
   return (
     <article
-      className="prose"
+      className={className}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
