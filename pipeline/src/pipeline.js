@@ -1,4 +1,5 @@
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { fetchVideoDetails, setThumbnail } from "./youtubeClient.js";
 import { buildPrompts, STYLE_NAMES } from "./promptTemplates.js";
 import { generateAllImages, encodeImageToBase64 } from "./bflClient.js";
@@ -49,7 +50,16 @@ export async function runPipeline(videoId, { pick = 0, setThumbnail: shouldSet =
   const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
   console.log(`✅ ${images.length} images generated (${elapsed}s)`);
 
-  // 4. Set thumbnail on YouTube
+  // 4. Save images to disk
+  const outputDir = join("output", videoId);
+  mkdirSync(outputDir, { recursive: true });
+  images.forEach((buf, i) => {
+    const filePath = join(outputDir, `${STYLE_NAMES[i].toLowerCase().replace(/\s+/g, "-")}.png`);
+    writeFileSync(filePath, buf);
+    console.log(`💾 Saved ${filePath}`);
+  });
+
+  // 5. Set thumbnail on YouTube
   if (shouldSet) {
     const chosenStyle = STYLE_NAMES[pick] || STYLE_NAMES[0];
     console.log(`📤 Setting "${chosenStyle}" as thumbnail on YouTube...`);
