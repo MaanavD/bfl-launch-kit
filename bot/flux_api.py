@@ -9,7 +9,7 @@ log = logging.getLogger("fluxbot.flux_api")
 
 BFL_API_BASE = "https://api.bfl.ai/v1"
 
-# Available models — pro-preview is the default
+# Available models - pro-preview is the default
 MODELS = {
     "pro": "flux-2-pro-preview",
     "max": "flux-2-max",
@@ -70,7 +70,7 @@ async def _submit_and_download(
             if resp.status == 402:
                 raise ValueError("Out of BFL API credits. Add credits at dashboard.bfl.ai")
             if resp.status == 429:
-                raise ValueError("Rate limited — too many active tasks. Wait a moment and try again.")
+                raise ValueError("Rate limited - too many active tasks. Wait a moment and try again.")
             if resp.status != 200:
                 text = await resp.text()
                 raise ValueError(f"API error ({resp.status}): {text}")

@@ -8,12 +8,14 @@ const GITHUB_REPO = "https://github.com/MaanavD/bfl-launch-kit/tree/main/bot";
 export default function VideoTab() {
   return (
     <article className="video-tab">
-      <AuthorNote label="Author's Note" heading="A video you'd actually publish">
+      <AuthorNote label="Author's Note" heading="Reaching the audience a tutorial can't">
         <p>
-          A 7–9 minute screen-share walkthrough where I build and demo FluxBot — a Discord bot
-          powered by FLUX.2. Below is the full production plan: generated B-roll assets, script
-          timeline, bot features, and setup instructions. <strong>Audience:</strong> developers
-          who learn by watching, and the broader YouTube/social audience BFL wants to reach on launch day.
+          A written tutorial converts developers who learn by reading. This video captures
+          everyone else - the YouTube audience, the social scrollers, the developer who
+          won't clone a repo but will watch a 7-minute demo and think "I want that in my
+          server." It's the piece of the adoption funnel that gives FLUX.2 reach beyond
+          the developer blog audience, and FluxBot gives them a zero-friction way to
+          make their first generation without touching a terminal.
         </p>
       </AuthorNote>
 
@@ -30,7 +32,7 @@ export default function VideoTab() {
             right in Discord
           </h1>
           <p className="hero-body">
-            A 7–9 minute video where I build and demo FluxBot — a
+            A 7-9 minute video where I build and demo FluxBot - a
             Discord bot that puts FLUX.2 image generation directly in your
             server. Type a prompt, get an image back in seconds. Open
             source, ready to fork.
@@ -69,7 +71,7 @@ export default function VideoTab() {
         <p className="section-desc">
           Every image below was generated with FLUX.2 via the BFL API. I used
           these as B-roll throughout the video. Total cost:{" "}
-          <strong>$1.41</strong> for 47 images — about 3 cents each.
+          <strong>$1.41</strong> for 47 images - about 3 cents each.
         </p>
 
         <h3>Hook Montage</h3>
@@ -131,7 +133,7 @@ export default function VideoTab() {
         <p className="section-desc">
           Same prompt (&ldquo;a lone knight crossing a stone bridge over a
           chasm&rdquo;), two different user styles. This is the key moment
-          in the video — proof that personal styles change everything.
+          in the video - proof that personal styles change everything.
         </p>
         <div className="image-grid image-grid--2">
           <figure>
@@ -186,7 +188,7 @@ export default function VideoTab() {
 
         <h3>Community Montage</h3>
         <p className="section-desc">
-          Closing montage showing it&apos;s not just one person using the bot —
+          Closing montage showing it&apos;s not just one person using the bot -
           it&apos;s a whole server generating together.
         </p>
         <div className="image-grid image-grid--4">
@@ -243,7 +245,7 @@ export default function VideoTab() {
             <h3>Text to image</h3>
             <p>
               Describe what you want. FLUX.2 handles photorealism,
-              illustrations, concept art — whatever the prompt calls for.
+              illustrations, concept art - whatever the prompt calls for.
             </p>
           </div>
           <div className="feature">

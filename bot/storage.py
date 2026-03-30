@@ -27,7 +27,7 @@ class Storage:
     """
 
     _initialized = False
-    # In-memory caches — populated from DB on init and kept in sync
+    # In-memory caches - populated from DB on init and kept in sync
     _guild_keys: dict[int, str] = {}
     _user_keys: dict[int, str] = {}
     _user_styles: dict[int, str] = {}

@@ -5,12 +5,13 @@ import content from "../../content/tutorial.md";
 export default function TutorialTab() {
   return (
     <>
-      <AuthorNote label="Author's Note" heading="Zero to working CLI in 15 minutes">
+      <AuthorNote label="Author's Note" heading="Closing the activation gap">
         <p>
-          A written tutorial that takes a developer from no FLUX experience to a working
-          YouTube thumbnail generator. <strong>Audience:</strong> developers exploring the
-          FLUX API for the first time. The kind of person who signed up on launch day
-          but never made their first API call.
+          This tutorial exists for one reason: to turn a sign-up into an activated user.
+          The target reader is someone who grabbed an API key on launch day but hasn't
+          generated anything yet. They need a working result on their machine in under
+          15 minutes - not a concept explainer, not a docs walkthrough, but a real tool
+          that makes them think "I should build something with this."
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

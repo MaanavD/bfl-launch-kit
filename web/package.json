@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "bun next dev --turbopack",
+    "build": "bun next build",
+    "start": "bun next start"
   },
   "dependencies": {
     "marked": "^17.0.5",
-    "next": "^15.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "^16.2.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "shiki": "^4.0.2"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
+    "raw-loader": "^4.0.2",
     "typescript": "^5.6.0"
   }
 }

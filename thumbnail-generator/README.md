@@ -28,7 +28,7 @@ node src/index.js --file description.txt --face headshot.jpg
 
 ## API Key
 
-- **BFL API Key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) — create account, add credits, generate key
+- **BFL API Key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) - create account, add credits, generate key
 
 ## Cost
 

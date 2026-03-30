@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import TutorialTab from "./components/TutorialTab";
 import VideoTab from "./components/VideoTab";
 import BlogTab from "./components/BlogTab";
@@ -8,18 +8,48 @@ import StrategyTab from "./components/StrategyTab";
 
 const TABS = [
   { id: "strategy", label: "Strategy" },
+  { id: "blog", label: "Blog" },
   { id: "tutorial", label: "Tutorial" },
   { id: "video", label: "Video" },
-  { id: "blog", label: "Blog" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
+
+const TAB_IDS = TABS.map((t) => t.id) as unknown as TabId[];
+
+function getTabFromHash(): TabId {
+  if (typeof window === "undefined") return "strategy";
+  const hash = window.location.hash.replace("#", "");
+  return TAB_IDS.includes(hash as TabId) ? (hash as TabId) : "strategy";
+}
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabId>("strategy");
   const prevIndexRef = useRef(0);
   const [slideDir, setSlideDir] = useState<"left" | "right" | "up">("right");
   const [mountKey, setMountKey] = useState(0);
+
+  // Sync tab from hash after hydration (avoids SSR/client mismatch)
+  useEffect(() => {
+    const tab = getTabFromHash();
+    if (tab !== "strategy") {
+      prevIndexRef.current = TABS.findIndex((t) => t.id === tab);
+      setActiveTab(tab);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.location.hash = activeTab;
+  }, [activeTab]);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const tab = getTabFromHash();
+      if (tab !== activeTab) switchTab(tab);
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  });
 
   function switchTab(id: TabId) {
     const newIndex = TABS.findIndex((t) => t.id === id);
@@ -66,7 +96,7 @@ export default function Home() {
               BFL
             </a>
             <a
-              href="https://docs.bfl.ml"
+              href="https://docs.bfl.ai"
               target="_blank"
               rel="noopener noreferrer"
             >

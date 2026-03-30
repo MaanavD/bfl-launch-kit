@@ -1,4 +1,4 @@
-# Thumbnail Pipeline — Automated YouTube Integration
+# Thumbnail Pipeline - Automated YouTube Integration
 
 This is the automated version of the thumbnail generator. It listens for new YouTube video uploads via Pub/Sub webhooks, fetches the video description, generates three thumbnail variants with FLUX.2, and sets one live on the video.
 
@@ -46,7 +46,7 @@ cp .env.example .env
 | `BFL_API_KEY` | [dashboard.bfl.ai](https://dashboard.bfl.ai/) | ~$0.04/run | Yes |
 | `YOUTUBE_CLIENT_ID` | Google Cloud Console (see below) | Free | Yes |
 | `YOUTUBE_CLIENT_SECRET` | Google Cloud Console (see below) | Free | Yes |
-| `PORT` | Server port (default: 3000) | — | No |
+| `PORT` | Server port (default: 3000) | - | No |
 
 #### Google Cloud + YouTube API Setup (free, ~5 minutes)
 
@@ -58,7 +58,7 @@ cp .env.example .env
 2. **Enable the YouTube Data API v3**
    - In your project, go to **APIs & Services → Library**
    - Search "YouTube Data API v3" → click it → **Enable**
-   - Free tier: 10,000 quota units/day (each `videos.list` call = 1 unit, `thumbnails.set` = 50 units — you'd need to generate ~200 thumbnails/day to hit the limit)
+   - Free tier: 10,000 quota units/day (each `videos.list` call = 1 unit, `thumbnails.set` = 50 units - you'd need to generate ~200 thumbnails/day to hit the limit)
 
 3. **Create OAuth2 credentials**
    - Go to **APIs & Services → Credentials**
@@ -73,7 +73,7 @@ cp .env.example .env
      - Application type: **Desktop app** (simplest for local use)
      - Name: anything
      - Click **Create**
-   - You'll see **Client ID** and **Client Secret** — copy both into your `.env`
+   - You'll see **Client ID** and **Client Secret** - copy both into your `.env`
 
 4. **Authorize your YouTube account**
 
@@ -81,7 +81,7 @@ cp .env.example .env
    npm run auth
    ```
 
-   This opens a URL — paste it in your browser, sign in with the Google account that owns your YouTube channel, click "Allow", and paste the authorization code back into the terminal. A `.youtube-token.json` file is saved locally. You only do this once.
+   This opens a URL - paste it in your browser, sign in with the Google account that owns your YouTube channel, click "Allow", and paste the authorization code back into the terminal. A `.youtube-token.json` file is saved locally. You only do this once.
 
 ### 3. Run the Server
 
@@ -89,7 +89,7 @@ cp .env.example .env
 npm start
 ```
 
-### 4. Subscribe to YouTube Pub/Sub (optional — for auto-trigger)
+### 4. Subscribe to YouTube Pub/Sub (optional - for auto-trigger)
 
 This part is also free. YouTube uses Google's public Pub/Sub hub.
 
@@ -112,7 +112,7 @@ curl -X POST https://pubsubhubbub.appspot.com/subscribe \
 
 Replace `YOUR_CHANNEL_ID` with your actual channel ID (find it at [youtube.com/account_advanced](https://youtube.com/account_advanced)).
 
-The subscription lasts 10 days and auto-renews if your server responds to verification. For production, deploy the server to a permanent URL (Railway, Render, Cloud Run — all have free tiers).
+The subscription lasts 10 days and auto-renews if your server responds to verification. For production, deploy the server to a permanent URL (Railway, Render, Cloud Run - all have free tiers).
 
 ## Usage
 
@@ -143,22 +143,22 @@ The `pick` field selects which style to set: `0` for Cinematic, `1` for Graphic,
 ```
 pipeline/
   src/
-    auth.js             One-time OAuth2 setup — authorizes your YouTube account
-    server.js           Express server — webhook + manual trigger endpoints
+    auth.js             One-time OAuth2 setup - authorizes your YouTube account
+    server.js           Express server - webhook + manual trigger endpoints
     trigger.js          CLI script for manual one-off runs
-    pipeline.js         Orchestrator — wires everything together
-    youtubeClient.js    YouTube Data API — fetch video details, set thumbnails
-    bflClient.js        BFL FLUX.2 API — image generation
+    pipeline.js         Orchestrator - wires everything together
+    youtubeClient.js    YouTube Data API - fetch video details, set thumbnails
+    bflClient.js        BFL FLUX.2 API - image generation
     promptTemplates.js  Style templates (Cinematic, Graphic, Abstract)
 ```
 
 ## Deployment
 
-This server is stateless — deploy to any platform that runs Node.js:
+This server is stateless - deploy to any platform that runs Node.js:
 
-- **Cloud Run / Cloud Functions** — natural fit if already using Google Cloud for the YouTube API
-- **Railway / Render / Fly.io** — one-click deploys, free tiers available
-- **AWS Lambda + API Gateway** — wrap `server.js` with a Lambda adapter
+- **Cloud Run / Cloud Functions** - natural fit if already using Google Cloud for the YouTube API
+- **Railway / Render / Fly.io** - one-click deploys, free tiers available
+- **AWS Lambda + API Gateway** - wrap `server.js` with a Lambda adapter
 
 The only hard requirement is a publicly accessible URL for the YouTube Pub/Sub callback.
 

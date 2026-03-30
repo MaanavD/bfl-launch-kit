@@ -1,5 +1,5 @@
 """
-FluxBot Video — Pre-generate all demo images.
+FluxBot Video - Pre-generate all demo images.
 
 Usage:
     export BFL_API_KEY="your_key_here"
@@ -30,12 +30,12 @@ ASSETS_DIR.mkdir(exist_ok=True)
 # ─── Image definitions ───────────────────────────────────────────────
 # (number, model, width, height, prompt, filename)
 IMAGES = [
-    # HOOK — Hero images (max for quality)
+    # HOOK - Hero images (max for quality)
     (1, "flux-2-max", 1440, 1024,
      "A cyberpunk samurai standing motionless in heavy rain on a Tokyo street at night, neon signs reflecting off wet pavement in pink and blue, cinematic depth of field, hyper-detailed armor with glowing accents, volumetric fog, 8k photograph",
      "01_hook_hero_samurai"),
 
-    # HOOK — Montage (pro for speed, shown briefly)
+    # HOOK - Montage (pro for speed, shown briefly)
     (2, "flux-2-pro-preview", 1024, 1024,
      "Oil painting of a golden retriever wearing a tiny crown, sitting on a velvet throne, renaissance lighting, gallery quality",
      "02_montage_dog_throne"),
@@ -56,12 +56,12 @@ IMAGES = [
      "Anime-style portrait of a female space pilot in a cockpit, stars visible through the windshield, dramatic side lighting, detailed mechanical controls",
      "06_montage_anime_pilot"),
 
-    # WORKFLOW — /generate demo (max — held fullscreen 3s)
+    # WORKFLOW - /generate demo (max - held fullscreen 3s)
     (7, "flux-2-max", 1440, 1024,
      "A massive dragon perched on top of a modern glass skyscraper during a violent thunderstorm, a bolt of lightning illuminating its iridescent scales, rain streaking past, cinematic ultra wide angle shot from below, dramatic clouds, photorealistic, 8k",
      "07_generate_dragon"),
 
-    # WORKFLOW — Style comparison (max — shown side-by-side, key demo)
+    # WORKFLOW - Style comparison (max - shown side-by-side, key demo)
     (8, "flux-2-max", 1024, 1024,
      "A lone knight in heavy armor crossing an ancient crumbling stone bridge over a deep misty chasm, dark fantasy oil painting style, dramatic chiaroscuro lighting, muted earth tones, textured brushstrokes visible, atmospheric perspective, moody and cinematic",
      "08_style_knight_fantasy"),
@@ -70,8 +70,8 @@ IMAGES = [
      "A lone knight crossing a simple stone bridge over a chasm, clean vector illustration style, flat design, pastel color palette, minimal shapes, geometric, modern graphic design aesthetic",
      "09_style_knight_vector"),
 
-    # WORKFLOW — Restyle hero (max — held fullscreen 3s)
-    # NOTE: #10-14 are IMAGE-TO-IMAGE — you need source photos.
+    # WORKFLOW - Restyle hero (max - held fullscreen 3s)
+    # NOTE: #10-14 are IMAGE-TO-IMAGE - you need source photos.
     # Run these separately with your own photos using the restyle endpoint.
     # Prompts listed here for reference.
 
@@ -95,22 +95,22 @@ IMAGES = [
     # INPUT: A flat lay product photo on a kitchen table
     # PROMPT: "Professional product photograph, clean white background, studio lighting, commercial e-commerce quality"
 
-    # SETUP — Architecture diagram (pro)
+    # SETUP - Architecture diagram (pro)
     (15, "flux-2-pro-preview", 1440, 810,
      'Minimal technical architecture diagram on a dark navy background, three rounded rectangles connected by glowing arrows, clean sans-serif labels reading "Discord", "Bot", "FLUX API", modern tech aesthetic, flat design, subtle grid pattern in background',
      "15_architecture_diagram"),
 
-    # SETUP — Klein speed demo (klein — that's the point)
+    # SETUP - Klein speed demo (klein - that's the point)
     (16, "flux-2-klein-9b-preview", 1024, 1024,
      "A lighthouse standing on a rocky cliff in a violent storm, massive waves crashing, lightning splitting the sky, dramatic moody atmosphere, rain, cinematic",
      "16_klein_lighthouse"),
 
-    # THUMBNAIL (max — this gets millions of impressions)
+    # THUMBNAIL (max - this gets millions of impressions)
     (17, "flux-2-max", 1920, 1080,
      "A hyper-detailed cinematic photograph of a fantasy knight standing on a cliff overlooking a glowing city at sunset, volumetric lighting, 8k, dramatic clouds, ultra wide angle",
      "17_thumbnail_knight"),
 
-    # COMMUNITY MONTAGE (pro — shown briefly)
+    # COMMUNITY MONTAGE (pro - shown briefly)
     (18, "flux-2-pro-preview", 1024, 1024,
      "Portrait of an elf ranger in a dark enchanted forest, dramatic rim lighting, detailed leather armor with intricate leaf motifs, cinematic fantasy art, D&D character art style",
      "18_community_dnd_elf"),

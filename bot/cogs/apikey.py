@@ -14,7 +14,7 @@ class ApiKey(commands.Cog):
 
     @app_commands.command(
         name="setkey",
-        description="Set a shared BFL API key for this server — covers all members (admin only)",
+        description="Set a shared BFL API key for this server - covers all members (admin only)",
     )
     @app_commands.describe(key="Your BFL API key from dashboard.bfl.ai")
     @app_commands.default_permissions(administrator=True)

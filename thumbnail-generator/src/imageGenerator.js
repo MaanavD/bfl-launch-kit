@@ -2,7 +2,12 @@ import { readFile } from "node:fs/promises";
 import { BFL_API_KEY } from "./config.js";
 
 const BFL_BASE_URL = "https://api.bfl.ai/v1";
-const FLUX_ENDPOINT = `${BFL_BASE_URL}/flux-2-klein-4b`;
+const MODELS = {
+  klein: "flux-2-klein-4b",
+  pro: "flux-2-pro-preview",
+  max: "flux-2-max",
+};
+const DEFAULT_MODEL = "klein";
 const POLL_INTERVAL_MS = 1000;
 const MAX_POLLS = 120;
 
@@ -25,7 +30,9 @@ async function encodeImageToBase64(filePath) {
  * @param {string|null} faceBase64 - Base64-encoded face reference image, or null.
  * @returns {Promise<Buffer>} The generated image as a Buffer.
  */
-export async function generateImage(prompt, index, faceBase64 = null) {
+export async function generateImage(prompt, index, faceBase64 = null, model = DEFAULT_MODEL) {
+  const endpoint = `${BFL_BASE_URL}/${MODELS[model] || MODELS[DEFAULT_MODEL]}`;
+
   // Build the request payload
   const payload = {
     prompt,
@@ -39,7 +46,7 @@ export async function generateImage(prompt, index, faceBase64 = null) {
   }
 
   // Step 1: Submit generation request
-  const submitResponse = await fetch(FLUX_ENDPOINT, {
+  const submitResponse = await fetch(endpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -96,7 +103,7 @@ export async function generateImage(prompt, index, faceBase64 = null) {
  * @param {string|null} facePath - Path to face reference image, or null.
  * @returns {Promise<Buffer[]>} Array of image Buffers.
  */
-export async function generateAllImages(prompts, facePath = null) {
+export async function generateAllImages(prompts, facePath = null, model = DEFAULT_MODEL) {
   let faceBase64 = null;
   if (facePath) {
     console.log(`👤 Encoding face reference: ${facePath}`);
@@ -104,7 +111,7 @@ export async function generateAllImages(prompts, facePath = null) {
   }
 
   return Promise.all(
-    prompts.map((prompt, i) => generateImage(prompt, i + 1, faceBase64))
+    prompts.map((prompt, i) => generateImage(prompt, i + 1, faceBase64, model))
   );
 }
 

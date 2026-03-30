@@ -5,13 +5,12 @@ import content from "../../content/strategy.md";
 export default function StrategyTab() {
   return (
     <>
-      <AuthorNote label="Author's Note" heading="The launch playbook">
+      <AuthorNote label="Author's Note" heading="Adoption is the problem. This is my plan to fix it.">
         <p>
-          A one-page plan for how all the launch-day content fits together.
-          Each deliverable targets a different moment: the <strong>blog post</strong> gets
-          attention (HN, Twitter/X, subreddits), the <strong>tutorial</strong> drives the first
-          API call, and the <strong>video</strong> shows-don't-tells for the audience that won't
-          clone a repo. The strategy below covers sequencing, conversion mechanics, and distribution.
+          BFL can get attention, and the last launch proved that. The hard part is
+          converting sign-ups into developers who actually build on the platform.
+          That's the specific problem I'm here to solve, and every deliverable
+          below is designed around it.
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

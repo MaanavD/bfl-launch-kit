@@ -16,38 +16,47 @@ function parseArgs(args) {
   let description = null;
   let facePath = null;
   let filePath = null;
+  let titleText = null;
+  let model = null;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--face" && args[i + 1]) {
       facePath = args[++i];
     } else if (args[i] === "--file" && args[i + 1]) {
       filePath = args[++i];
+    } else if (args[i] === "--text" && args[i + 1]) {
+      titleText = args[++i];
+    } else if (args[i] === "--model" && args[i + 1]) {
+      model = args[++i];
     } else if (!description) {
       description = args[i];
     }
   }
 
-  return { description, facePath, filePath };
+  return { description, facePath, filePath, titleText, model };
 }
 
 async function main() {
-  const { description: cliDesc, facePath, filePath } = parseArgs(
+  const { description: cliDesc, facePath, filePath, titleText, model: cliModel } = parseArgs(
     process.argv.slice(2)
   );
+
+  // When --text is used, auto-upgrade to pro (klein can't render text)
+  const model = cliModel || (titleText ? "pro" : "klein");
 
   // Load description from file or CLI arg
   let description;
   if (filePath) {
     description = (await readFile(filePath, "utf-8")).trim();
-    console.log(`\n📄 Loaded description from: ${filePath}`);
+    console.log(`\n\ud83d\udcc4 Loaded description from: ${filePath}`);
   } else if (cliDesc) {
     description = cliDesc;
   } else {
     console.error(
-      '\n❌ Usage: node src/index.js "Your video description" [--face headshot.jpg]'
+      '\n\u274c Usage: node src/index.js "Your video description" [--face headshot.jpg] [--text "Title Text"]'
     );
     console.error(
-      "         node src/index.js --file description.txt [--face headshot.jpg]\n"
+      '         node src/index.js --file description.txt [--face headshot.jpg] [--text "Title Text"]\n'
     );
     process.exit(1);
   }
@@ -58,8 +67,10 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\n🎬 Generating thumbnails for:\n   "${description.slice(0, 120)}${description.length > 120 ? "..." : ""}"\n`);
-  if (hasFace) console.log(`👤 Face reference: ${facePath}\n`);
+  console.log(`\n\ud83c\udfac Generating thumbnails for:\n   "${description.slice(0, 120)}${description.length > 120 ? "..." : ""}"\n`);
+  if (hasFace) console.log(`\ud83d\udc64 Face reference: ${facePath}`);
+  if (titleText) console.log(`\ud83d\udcdd Title text: "${titleText}"`);
+  console.log(`\ud83e\udde0 Model: ${model}${titleText && !cliModel ? " (auto-upgraded for text rendering)" : ""}\n`);
 
   // Ensure output directory exists
   if (!existsSync(OUTPUT_DIR)) {
@@ -68,7 +79,7 @@ async function main() {
 
   // Step 1: Build prompts from templates (no external API needed)
   const startPrompts = performance.now();
-  const prompts = buildPrompts(description, hasFace);
+  const prompts = buildPrompts(description, hasFace, titleText);
   const promptTime = ((performance.now() - startPrompts) / 1000).toFixed(1);
   console.log(`📝 Built 3 prompts from templates (${promptTime}s)`);
 
@@ -78,12 +89,13 @@ async function main() {
   });
 
   // Step 2: Generate images via BFL FLUX.2 API
-  console.log(`\n🎨 Sending 3 prompts to FLUX.2 API...`);
+  console.log(`\n\ud83c\udfa8 Sending 3 prompts to FLUX.2 API (${model})...`);
   if (hasFace) console.log(`   (with face reference for character consistency)`);
-  console.log(`⏳ Polling for results...\n`);
+  if (titleText) console.log(`   (with title text: "${titleText}")`);
+  console.log(`\u23f3 Polling for results...\n`);
 
   const startImages = performance.now();
-  const imageBuffers = await generateAllImages(prompts, facePath);
+  const imageBuffers = await generateAllImages(prompts, facePath, model);
   const imageTime = ((performance.now() - startImages) / 1000).toFixed(1);
   console.log(`\n🖼️  All 3 images generated (${imageTime}s)`);
 
@@ -101,6 +113,8 @@ async function main() {
   // Step 5: Write metadata for the HTML viewer
   const metadata = {
     description,
+    titleText: titleText || null,
+    model,
     face: facePath || null,
     generated_at: new Date().toISOString(),
     styles,

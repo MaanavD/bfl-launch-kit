@@ -5,12 +5,13 @@ import content from "../../content/blog.md";
 export default function BlogTab() {
   return (
     <>
-      <AuthorNote label="Author's Note" heading="Launch-day announcement post">
+      <AuthorNote label="Author's Note" heading="Top of the adoption funnel">
         <p>
-          A blog post for the BFL website announcing the new FLUX model to a developer audience.
-          Designed to convert readers into sign-ups: what's new, why it matters, and a clear
-          path to getting started. <strong>Audience:</strong> the broader developer community,
-          from AI-curious builders to teams already shipping with image generation.
+          This is the top of the funnel - the piece that turns curiosity into a sign-up.
+          But sign-ups alone don't matter if they don't activate. So the post is structured
+          to do both: make the case for FLUX.2, then give the reader a clear next action
+          (tutorial, bot, or raw API) based on how they like to build. Every section funnels
+          toward that first API call, not just an account creation.
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

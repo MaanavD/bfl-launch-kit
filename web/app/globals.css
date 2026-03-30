@@ -425,6 +425,75 @@ a {
   border: 1px solid var(--border);
 }
 
+/* ── Figure Pair (side-by-side images) ── */
+
+.figure-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem -3rem;
+}
+
+.figure-pair figure {
+  margin: 0;
+}
+
+.figure-pair img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.figure-pair figcaption {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* ── Comic Strip Grid ── */
+
+.comic-strip {
+  margin: 2rem -3rem;
+}
+
+.comic-strip-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.comic-strip-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.comic-strip-panels img {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+/* ── Figure with float (text wraps around image) ── */
+
+.article-figure--right {
+  float: right;
+  width: 45%;
+  margin: 0.25rem 0 1.25rem 1.5rem;
+}
+
+.article-figure--right img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
 /* ── Thumbnail Grid (Tutorial) ── */
 
 .thumbnail-grid {
@@ -1060,6 +1129,27 @@ a {
   .article-figure--wide {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .figure-pair {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .comic-strip {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .comic-strip-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .article-figure--right {
+    float: none;
+    width: 100%;
+    margin: 1.5rem 0;
   }
 
   .thumbnail-grid {

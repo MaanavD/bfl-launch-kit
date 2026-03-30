@@ -46,22 +46,24 @@ So I built a CLI tool that does it in 10 seconds. You give it a video descriptio
 
 ## What you'll build
 
-A CLI tool that turns a video description into 3 thumbnails. Along the way, you'll learn the FLUX.2 API (submit prompt → poll for result → download image), prompt templating, and image compositing with sharp.
+A CLI tool that turns a video description into 3 thumbnails. Along the way, you'll learn the FLUX.2 API (submit prompt → poll for result → download image), prompt templating, model selection (klein for speed, pro for text rendering), and image compositing with sharp.
 
 ---
 
 ## Prerequisites
 
 - Node.js 20+
-- A BFL API key — grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/). $10 in credits is more than enough.
+- A BFL API key - grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/). $10 in credits is more than enough.
 
 ---
 
 ## How it works
 
-Description in → three style templates → three concurrent FLUX.2 calls → comparison grid out. If you pass a headshot, FLUX.2's multi-reference editing keeps your face consistent across all variants.
+Description in → three style templates → three concurrent FLUX.2 calls → comparison grid out. If you pass a headshot, FLUX.2's multi-reference editing keeps your face consistent across all variants. If you pass `--text`, the tool auto-upgrades to `flux-2-pro-preview` and renders your title directly into the image.
 
-**Why FLUX.2 and not an LLM for prompts?** I tried GPT-4 for prompt expansion and it kept adding stuff I didn't ask for — extra characters, different compositions. Templates are deterministic: same input, same three directions. And FLUX.2 specifically because thumbnails need prompt adherence over raw fidelity. The `flux-2-klein-4b` endpoint follows layout instructions reliably, runs in a few seconds, and costs ~$0.014/image. Four cents for three thumbnails.
+**Why FLUX.2 and not an LLM for prompts?** I tried GPT-4 for prompt expansion and it kept adding stuff I didn't ask for - extra characters, different compositions. Templates are deterministic: same input, same three directions. And FLUX.2 specifically because thumbnails need prompt adherence over raw fidelity.
+
+**Model selection:** The tool picks the right model for the job. Text-free thumbnails use `flux-2-klein-4b` (~$0.014/image, sub-second). When you add `--text`, it upgrades to `flux-2-pro-preview` (~$0.03/MP) which handles typography cleanly. You can also force `--model max` for maximum quality.
 
 ---
 
@@ -81,37 +83,62 @@ Create a `.env` file:
 BFL_API_KEY=your_bfl_api_key_here
 ```
 
-> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add credits ($10 minimum) → API → Keys → create key. Copy it immediately — you only see the full key once.
+> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add credits ($10 minimum) → API → Keys → create key. Copy it immediately - you only see the full key once.
 
 ### Step 2: The prompt builder
 
-No LLM here — just three style templates that wrap your description. Here's the core of `src/promptGenerator.js`:
+No LLM here - just three style templates that wrap your description. Here's the core of `src/promptGenerator.js`:
 
 ```js
+// Text-free templates (for klein - fast and cheap)
 const STYLE_TEMPLATES = [
   {
     name: "Cinematic",
     wrap: (desc, hasFace) =>
-      `A photorealistic, cinematic YouTube thumbnail with dramatic lighting
-       and shallow depth of field. ${hasFace ? "The person from the reference
-       image is the main subject, " : ""}The scene depicts: ${desc}. Shot on
-       35mm film, rich color grading, high contrast, bold composition optimized
-       for small-size readability.`,
+      `TEXT-FREE IMAGE. A photorealistic, cinematic YouTube thumbnail.
+       Dramatic side lighting, shallow depth of field. ${hasFace
+       ? "The person from the reference image is the main subject. " : ""}
+       The scene visually represents: ${desc}. The image contains NO text,
+       NO titles, NO writing of any kind.`,
   },
   // ... Graphic and Abstract templates follow the same pattern
 ];
 
-export function buildPrompts(description, hasFace = false) {
-  return STYLE_TEMPLATES.map((style) => style.wrap(description, hasFace));
+// Text-enabled templates (for pro/max - renders titles)
+const TEXT_STYLE_TEMPLATES = [
+  {
+    name: "Cinematic",
+    wrap: (desc, title, hasFace) =>
+      `A photorealistic, cinematic YouTube thumbnail. Dramatic side lighting.
+       ${hasFace ? "The person from the reference image is the main subject. "
+       : ""}The scene visually represents: ${desc}. The title text "${title}"
+       is displayed prominently in large, bold white letters with a subtle
+       dark shadow, positioned in the upper-left area.`,
+  },
+  // ... Graphic and Abstract with different typography styles
+];
+
+export function buildPrompts(description, hasFace = false, titleText = null) {
+  if (titleText) {
+    return TEXT_STYLE_TEMPLATES.map((s) => s.wrap(description, titleText, hasFace));
+  }
+  const cleaned = sanitizeForImageGen(description);
+  return STYLE_TEMPLATES.map((style) => style.wrap(cleaned, hasFace));
 }
 ```
 
-Three templates (Cinematic, Graphic, Abstract), each wrapping your description in a different visual direction. When a face reference is present, the templates tell FLUX.2 to keep that person as the subject.
+Two sets of templates: text-free (for klein) and text-enabled (for pro/max). The text-free templates explicitly tell FLUX.2 "no text" and sanitize brand names that the model might try to render as garbled letters. The text-enabled templates tell the model exactly what text to render and where to position it. When a face reference is present, both sets tell FLUX.2 to keep that person as the subject.
 
 ### Step 3: Calling the FLUX.2 API
 
 ```js
-const FLUX_ENDPOINT = "https://api.bfl.ai/v1/flux-2-klein-4b";
+const MODELS = {
+  klein: "flux-2-klein-4b",     // Fast, cheap, text-free
+  pro: "flux-2-pro-preview",    // Text rendering, higher quality
+  max: "flux-2-max",            // Maximum quality
+};
+
+const endpoint = `https://api.bfl.ai/v1/${MODELS[model]}`;
 
 const payload = {
   prompt,
@@ -124,7 +151,7 @@ if (faceBase64) {
   payload.input_image = faceBase64;
 }
 
-const response = await fetch(FLUX_ENDPOINT, {
+const response = await fetch(endpoint, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -136,7 +163,7 @@ const response = await fetch(FLUX_ENDPOINT, {
 const { polling_url } = await response.json();
 ```
 
-When `input_image` is present, FLUX.2 activates character consistency automatically — same endpoint either way.
+Same API contract across all models - only the endpoint changes. When `--text` is passed, the CLI auto-upgrades from `klein` to `pro`. When `input_image` is present, FLUX.2 activates character consistency automatically.
 
 ### Step 4: The polling pattern
 
@@ -156,7 +183,7 @@ for (let poll = 0; poll < MAX_POLLS; poll++) {
 }
 ```
 
-All 3 run concurrently via `Promise.all` — total wait = the slowest image, not three sequential calls.
+All 3 run concurrently via `Promise.all` - total wait = the slowest image, not three sequential calls.
 
 ### Step 5: Run it
 
@@ -219,32 +246,56 @@ Open `viewer.html` in your browser. Three distinct thumbnails, and if you used `
   <img src="/tutorial/cli-abstract.jpg" alt="Abstract style thumbnail" loading="lazy" />
 </div>
 
-### Step 6: Keep going
+### Step 6: Add title text
+
+The `--text` flag renders your title directly into the thumbnail. This auto-upgrades from `klein` to `pro-preview`, which handles typography cleanly:
+
+```bash
+node src/index.js "A deep dive into building SaaS products in 2025" --face headshot.jpg --text "Building SaaS in 2025"
+```
+
+<div class="thumbnail-grid">
+  <img src="/tutorial/text-cinematic.jpg" alt="Cinematic thumbnail with rendered title text" loading="lazy" />
+  <img src="/tutorial/text-graphic.jpg" alt="Graphic thumbnail with rendered title text" loading="lazy" />
+  <img src="/tutorial/text-abstract.jpg" alt="Abstract thumbnail with rendered title text" loading="lazy" />
+</div>
+
+Same three styles, but now with legible title text baked into the image. The pro model costs ~$0.03/megapixel instead of klein's $0.014/image, but for a final thumbnail that's going on YouTube, it's worth it.
+
+**Why not just overlay text in post?** You can, but FLUX.2's text rendering integrates the typography into the scene - matching lighting, color, and composition naturally. It's one fewer step in your workflow.
+
+### Step 7: Keep going
 
 ```bash
 # Different topic, same face
 node src/index.js "Why Rust is eating Python's lunch in systems programming" --face headshot.jpg
 
-# No face, pure concept art
+# With title text and face
+node src/index.js "The hidden costs of microservices" --face headshot.jpg --text "Microservices Are Dead"
+
+# Force max model for highest quality
+node src/index.js "Building the future of AI" --text "The AI Revolution" --model max
+
+# No face, no text, pure concept art on klein (cheapest)
 node src/index.js "The hidden costs of microservices: why monoliths are making a comeback"
 
 # Long-form description from a file
 node src/index.js --file script-excerpt.txt
 ```
 
-Each run overwrites `output/` with fresh results. Under 10 seconds end to end.
+Each run overwrites `output/` with fresh results. Text-free runs on klein take under 10 seconds; text runs on pro take ~20 seconds.
 
 ---
 
 ## Where to go from here
 
-The CLI tool is the building block. The repo also ships a `pipeline/` folder that wires the same generation logic into a fully automated YouTube workflow — new video goes up, thumbnails generate automatically, and one gets set as the live thumbnail via the YouTube API. Same BFL API calls, just wrapped in a webhook listener. Setup instructions are in the [pipeline README](https://github.com/MaanavD/bfl-launch-kit/tree/main/pipeline).
+The CLI tool is the building block. The repo also ships a `pipeline/` folder that wires the same generation logic into a fully automated YouTube workflow - new video goes up, thumbnails generate automatically, and one gets set as the live thumbnail via the YouTube API. Same BFL API calls, just wrapped in a webhook listener. Setup instructions are in the [pipeline README](https://github.com/MaanavD/bfl-launch-kit/tree/main/pipeline).
 
 ---
 
 ## Try it
 
-You've read the walkthrough. Now run the actual thing — it takes 5 minutes.
+You've read the walkthrough. Now run the actual thing - it takes 5 minutes.
 
 1. Grab an API key at [dashboard.bfl.ai](https://dashboard.bfl.ai).
 2. Run:
@@ -256,5 +307,6 @@ node src/index.js "A deep dive into building SaaS products in 2025, covering Rea
 3. Open `viewer.html`. Pick your favorite.
 4. Swap in your own description and run it again.
 5. Add `--face headshot.jpg` to put yourself in the thumbnails.
+6. Add `--text "Your Title Here"` to render text directly into the image.
 
 That's the real goal of this tutorial: not to read about FLUX.2, but to make one successful API call and get a usable result on your machine.
