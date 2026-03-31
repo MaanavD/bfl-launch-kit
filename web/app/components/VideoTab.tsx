@@ -5,8 +5,36 @@ import AuthorNote from "./AuthorNote";
 import MarkdownArticle from "./MarkdownArticle";
 import rawContent from "../../content/video.md";
 
-const YOUTUBE_VIDEO_ID =
-  process.env.NEXT_PUBLIC_YOUTUBE_VIDEO_ID ?? "YOUR_VIDEO_ID";
+const FALLBACK_YOUTUBE_VIDEO_ID = "0l8u5ZjKKxA";
+
+function resolveYouTubeVideoId(value?: string) {
+  if (!value) return FALLBACK_YOUTUBE_VIDEO_ID;
+
+  const trimmed = value.trim();
+  if (/^[\w-]{11}$/.test(trimmed)) {
+    return trimmed;
+  }
+
+  try {
+    const url = new URL(trimmed);
+    if (url.hostname.includes("youtu.be")) {
+      const shortId = url.pathname.replace(/^\/+/, "");
+      return /^[\w-]{11}$/.test(shortId) ? shortId : FALLBACK_YOUTUBE_VIDEO_ID;
+    }
+
+    const candidate =
+      url.searchParams.get("v") ?? url.pathname.split("/").filter(Boolean).pop();
+    return candidate && /^[\w-]{11}$/.test(candidate)
+      ? candidate
+      : FALLBACK_YOUTUBE_VIDEO_ID;
+  } catch {
+    return FALLBACK_YOUTUBE_VIDEO_ID;
+  }
+}
+
+const YOUTUBE_VIDEO_ID = resolveYouTubeVideoId(
+  process.env.NEXT_PUBLIC_YOUTUBE_VIDEO_ID ?? process.env.NEXT_PUBLIC_YOUTUBE_URL
+);
 
 export default function VideoTab() {
   const content = useMemo(() => {

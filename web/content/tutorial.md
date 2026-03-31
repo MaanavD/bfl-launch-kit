@@ -225,7 +225,11 @@ FLUX.2's text rendering integrates typography into the scene - matching lighting
 - **Automate it.** The repo ships a `pipeline/` folder that wires the same generation logic into an automated YouTube workflow - new video goes up, thumbnails generate, and one gets set as the live thumbnail via the YouTube API. [Setup instructions →](https://github.com/MaanavD/bfl-launch-kit/tree/main/pipeline)
 
 <figure class="article-figure article-figure--wide">
-  <video src="/tutorial/pipeline-demo.mp4" autoplay loop muted playsinline aria-label="Pipeline automation demo showing thumbnail generation and YouTube publishing"></video>
+  <video controls autoplay loop muted playsinline preload="metadata" poster="/tutorial/viewer.jpg" aria-label="Pipeline automation demo showing thumbnail generation and YouTube publishing">
+    <source src="/tutorial/pipeline-demo.mp4" type="video/mp4" />
+    Your browser does not support the video tag. <a href="/tutorial/pipeline-demo.mp4">Download the demo video</a>.
+  </video>
+  <figcaption>Pipeline demo: generate thumbnail concepts, review them, and push the winner live to YouTube.</figcaption>
 </figure>
 
 - **Try `--model max`** for highest quality output.

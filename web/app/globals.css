@@ -479,11 +479,20 @@ a {
   margin-right: -2rem;
 }
 
+.article-figure figcaption {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.625rem;
+  line-height: 1.5;
+}
+
 .article-figure img,
 .article-figure video {
+  display: block;
   width: 100%;
   border-radius: 6px;
   border: 1px solid var(--border);
+  background: oklch(92% 0.006 85);
 }
 
 /* ── Figure Pair (side-by-side images) ── */
