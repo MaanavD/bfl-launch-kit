@@ -57,6 +57,7 @@ Secondary signals: promo code redemption by channel, GitHub stars/forks on FluxB
 
 ## Given more time
 
+- **Sizzle reel** — a 60-90 second hype cut of FLUX.2's best outputs, set to music, designed for Twitter/X and Instagram Reels. No narration, no tutorial structure — pure visual flex. This is the piece that gets non-developers sharing. The assets are already generated; it's a post-production day.
 - **"Try it now" playground** on docs.bfl.ai - one image, <strong>no account</strong>, powered by the credit grant. Email capture comes after the "wow" moment (like FLUX on HuggingFace)
 - <span id="launch-challenge"></span>**48-hour launch challenge** - build with FLUX.2, win credits ($100 for top 10, $500 for first place). Best consumer workflow wins! Costs almost nothing and generates a wave of UGC.
 - **Partner launch kits** - pre-written announcements, model cards, integration guides with per-partner promo codes (this will help us identify where we get the most traffic). Coordinated ecosystem launch.

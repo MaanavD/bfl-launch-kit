@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=440">
+<title>CTA Card</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 60px 60px;
+    overflow: hidden;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 20px 32px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .card .prompt {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 6px;
+  }
+
+  .card .url {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .card .sub {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="prompt">Ready to try it yourself?</div>
+    <div class="url">api.bfl.ai</div>
+    <div class="sub">Free tier &bull; No credit card required</div>
+  </div>
+</body>
+</html>

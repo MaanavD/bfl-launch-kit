@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>End Card</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    /* offset upward to leave room for YouTube end screen elements at bottom */
+    margin-bottom: 120px;
+  }
+
+  .logo-line {
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .logo-line .tag {
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(255,255,255,0.35);
+    margin-left: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .link-row .label {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    text-align: right;
+    min-width: 180px;
+  }
+
+  .link-row .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-align: left;
+    min-width: 420px;
+  }
+
+  .divider {
+    width: 300px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-line">FluxBot <span class="tag">Open Source</span></div>
+    <div class="divider"></div>
+    <div class="links">
+      <div class="link-row">
+        <span class="label">Clone the bot →</span>
+        <span class="url">github.com/black-forest-labs/flux-discord-bot</span>
+      </div>
+      <div class="link-row">
+        <span class="label">Add to Discord →</span>
+        <span class="url">fluxbot.vercel.app</span>
+      </div>
+      <div class="link-row">
+        <span class="label">FLUX.2 API →</span>
+        <span class="url">api.bfl.ai</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

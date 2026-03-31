@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Speed Text</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+  }
+
+  .text {
+    font-size: 160px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 60px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9);
+    letter-spacing: -4px;
+  }
+
+  .unit {
+    font-size: 80px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0;
+    margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="text">0.8<span class="unit">seconds</span></div>
+</body>
+</html>

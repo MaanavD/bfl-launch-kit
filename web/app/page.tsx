@@ -5,12 +5,14 @@ import TutorialTab from "./components/TutorialTab";
 import VideoTab from "./components/VideoTab";
 import BlogTab from "./components/BlogTab";
 import StrategyTab from "./components/StrategyTab";
+import BotTab from "./components/BotTab";
 
 const TABS = [
   { id: "strategy", label: "Strategy" },
   { id: "blog", label: "Blog" },
   { id: "tutorial", label: "Tutorial" },
   { id: "video", label: "Video" },
+  { id: "bot", label: "FluxBot" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -93,6 +95,7 @@ export default function Home() {
       <main>
         <div role="tabpanel" key={`${activeTab}-${mountKey}`} className="tab-panel" data-slide={slideDir}>
           {activeTab === "tutorial" && <TutorialTab />}
+          {activeTab === "bot" && <BotTab />}
           {activeTab === "video" && <VideoTab />}
           {activeTab === "blog" && <BlogTab />}
           {activeTab === "strategy" && <StrategyTab />}

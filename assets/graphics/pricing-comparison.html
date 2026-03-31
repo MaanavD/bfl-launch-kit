@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Pricing Comparison</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    width: 1100px;
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .rows {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 260px 1fr 180px;
+    align-items: center;
+    padding: 28px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 32px;
+  }
+
+  .row:last-child {
+    border-bottom: none;
+  }
+
+  .row.highlight {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+
+  .row.highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    background: #e8e8ec;
+    border-radius: 2px;
+  }
+
+  .row .name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #e8e8ec;
+  }
+
+  .row.highlight .name {
+    color: #fff;
+  }
+
+  .row.dim .name {
+    color: rgba(255,255,255,0.4);
+  }
+
+  .row .desc {
+    font-size: 19px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .row.highlight .desc {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .row .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    color: #e8e8ec;
+    text-align: right;
+  }
+
+  .row.highlight .price {
+    color: #fff;
+  }
+
+  .row.dim .price {
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footnote {
+    font-size: 17px;
+    color: rgba(255,255,255,0.2);
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Monthly cost for 400+ custom images</div>
+    <div class="rows">
+      <div class="row highlight">
+        <div class="name">FLUX.2 Pro</div>
+        <div class="desc">400+ custom AI images, any style</div>
+        <div class="price">~$12</div>
+      </div>
+      <div class="row dim">
+        <div class="name">Canva Pro</div>
+        <div class="desc">Templates, not custom generation</div>
+        <div class="price">$13/mo</div>
+      </div>
+      <div class="row dim">
+        <div class="name">Shutterstock</div>
+        <div class="desc">10 stock downloads</div>
+        <div class="price">$29/mo</div>
+      </div>
+      <div class="row dim">
+        <div class="name">Freelance designer</div>
+        <div class="desc">1 custom graphic</div>
+        <div class="price">$50–200</div>
+      </div>
+    </div>
+    <div class="footnote">Klein model: $0.014/image &mdash; sub-second generation, practically free</div>
+  </div>
+</body>
+</html>

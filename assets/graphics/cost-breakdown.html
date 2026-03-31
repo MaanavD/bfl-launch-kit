@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>Cost Breakdown</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* subtle dot grid background */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .headline {
+    text-align: center;
+  }
+
+  .headline .label {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .headline .big-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 140px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -4px;
+  }
+
+  .headline .big-number .dollar {
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+    font-size: 90px;
+    vertical-align: top;
+    position: relative;
+    top: 12px;
+    margin-right: 4px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 56px;
+    font-weight: 600;
+    color: #e8e8ec;
+    line-height: 1.1;
+  }
+
+  .stat .desc {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    margin-top: 8px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .context {
+    text-align: center;
+    font-size: 20px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 400;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="headline">
+      <div class="label">Total API cost for this video</div>
+      <div class="big-number"><span class="dollar">$</span>1.41</div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="value">47</div>
+        <div class="desc">images generated</div>
+      </div>
+      <div class="divider"></div>
+      <div class="stat">
+        <div class="value">$0.03</div>
+        <div class="desc">per image</div>
+      </div>
+    </div>
+    <div class="context">FLUX.2 Pro &mdash; production-quality images at stock-photo pricing</div>
+  </div>
+</body>
+</html>
