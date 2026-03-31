@@ -58,20 +58,19 @@ Under **OAuth2 → URL Generator**, select the `bot` and `applications.commands`
 
 ### 2. Get a FLUX API Key
 
-Sign up at **[dashboard.bfl.ai](https://dashboard.bfl.ai)** — free tier, no credit card required.
+Create a key at **[dashboard.bfl.ai](https://dashboard.bfl.ai)**.
 
 ### 3. Run It
 
 ```bash
 # Clone
-git clone https://github.com/black-forest-labs/flux-discord-bot.git
-cd flux-discord-bot/bot
+git clone https://github.com/MaanavD/bfl-launch-kit.git
+cd bfl-launch-kit/bot
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Set your bot token
-echo "DISCORD_TOKEN=your_bot_token_here" > .env
+# Copy .env.example to .env and add DISCORD_TOKEN
 
 # Start
 python main.py

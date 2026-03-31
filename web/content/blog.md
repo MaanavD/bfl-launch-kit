@@ -60,7 +60,7 @@ Single-image quality is competitive across the top models. The real differentiat
         <th style="padding: 0.75rem 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border); width: 40%"></th>
         <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 700; border-bottom: 1px solid var(--border); color: var(--accent); width: 20%">FLUX.2</th>
         <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--text-secondary); width: 20%">GPT Image</th>
-        <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--text-secondary); width: 20%">Nano Banana</th>
+        <th style="padding: 0.75rem 0.5rem; text-align: center; font-weight: 600; border-bottom: 1px solid var(--border); color: var(--text-secondary); width: 20%">Imagen</th>
       </tr>
     </thead>
     <tbody>
@@ -110,7 +110,7 @@ Single-image quality is competitive across the top models. The real differentiat
   </table>
 </div>
 
-While all models provide great generation, the FLUX.2 line is meant to meet all your needs! Open weights you can self-host, exact hex color control, sub-second inference on consumer hardware, and four model tiers to match any workload. FLUX.2 is the only provider that ships all of it.
+Plenty of models can generate a strong first image. FLUX.2 is differentiated by breadth: open weights you can self-host, exact hex color control, sub-second inference on consumer hardware, and four model tiers behind one API.
 
 ---
 
@@ -196,7 +196,7 @@ For reference: 47 images on [pro] costs $1.41. A single stock photo download sta
 
 ## Start Building
 
-Sign up at [dashboard.bfl.ai](https://dashboard.bfl.ai). You get free credits, no credit card required. Generate your first image in under a minute.
+Sign up at [dashboard.bfl.ai](https://dashboard.bfl.ai), create a key, and generate your first image in under a minute.
 
 <div class="cta-block">
   <a href="https://dashboard.bfl.ai" target="_blank" rel="noopener noreferrer" class="btn-primary">

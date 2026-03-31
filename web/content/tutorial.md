@@ -36,7 +36,7 @@ echo "BFL_API_KEY=your_key_here" > .env
 node src/index.js "How to write a short story that actually gets finished, from first idea to final draft"
 ```
 
-> **Don't have a key yet?** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add $10 in credits → API → Keys → create key.
+> **Don't have a key yet?** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → API → Keys → create key.
 
 When the CLI finishes, your thumbnails are saved to `output/` and the viewer opens automatically in your browser. Total cost: ~$0.04. Keep reading for the how and why.
 
@@ -46,10 +46,10 @@ When the CLI finishes, your thumbnails are saved to `output/` and the viewer ope
 
 A CLI tool that turns a video description into 3 thumbnails. Along the way, you'll learn the FLUX.2 API, prompt templating, model selection, and how to add subjects to images.
 
-**You'll need:** Node.js 20+ and a BFL API key - grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/). $10 in credits is more than enough.
+**You'll need:** Node.js 20+ and a BFL API key - grab one at [dashboard.bfl.ai](https://dashboard.bfl.ai/).
 
 ## How it works
-Simply? 
+At a high level:
 > Description in → three style templates → concurrent FLUX.2 calls → comparison grid out.
 
 If you pass a headshot, FLUX.2's reference-based generation keeps your face consistent across all variants (it supports up to 10 reference images - we use one here). If you pass `--text`, the tool auto-upgrades to `flux-2-pro-preview` and renders your title directly into the image.
@@ -82,7 +82,7 @@ Create a `.env` file:
 BFL_API_KEY=your_bfl_api_key_here
 ```
 
-> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → add credits ($10 minimum) → API → Keys → create key. Copy it immediately - you only see the full key once.
+> **Get your API key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) → create account → API → Keys → create key. Copy it immediately - you only see the full key once.
 
 ### Step 2: The prompt builder
 

@@ -295,11 +295,11 @@ I recommend **Option C** — it's the clearest way to show the transformation an
 
 | Element | Track | Details |
 |---------|-------|---------|
-| Screen rec — browser at api.bfl.ai | V1 | Show sign-up page briefly, dashboard, "Copy" button for API key. |
+| Screen rec — browser at dashboard.bfl.ai | V1 | Show sign-up page briefly, dashboard, "Copy" button for API key. |
 | **KEY BLUR** | V2 | **Critical:** Place a blurred rectangle over your actual API key. In CapCut: Effects → Video Effects → Blur. Position/keyframe it to follow the key if you scroll. |
 | Cost breakdown graphic | V2 | Your designed graphic: "47 images / $1.41 / $0.03 per image". Overlay fullscreen when VO reaches the numbers. |
 | Comparison graphic | V2 | "FluxBot vs. Canva vs. Shutterstock vs. designer" graphic. Appears after cost breakdown. |
-| CTA card | V3 | Bottom-right: "Ready to try it yourself? api.bfl.ai — free tier, no credit card". Hold 5 seconds. |
+| CTA card | V3 | Bottom-right: "Ready to try it yourself? dashboard.bfl.ai - create a key". Hold 5 seconds. |
 | VO: "Step one: get a FLUX API key..." | A1 | — |
 
 **Graphics you need to design (Canva/Figma, then import):**
@@ -407,7 +407,7 @@ CapCut doesn't have a native stopwatch widget, so here's the best approach:
 | Element | Track | Details |
 |---------|-------|---------|
 | Screen rec — GitHub repo page | V1 | Show README briefly. |
-| On-screen text | V3 | "github.com/black-forest-labs/flux-discord-bot / Link in description ↓" |
+| On-screen text | V3 | "github.com/MaanavD/bfl-launch-kit / Link in description ↓" |
 | Face cam clip | V1 | Final lines — "If you build something cool..." through "Go make something." |
 | Black screen | V1 | Hard cut to black after "Go make something." |
 | End card | V3 | Subscribe button area, video suggestions. Hold 5 seconds. |
@@ -415,9 +415,9 @@ CapCut doesn't have a native stopwatch widget, so here's the best approach:
 **End card text (V3):**
 ```
 FluxBot — Open Source
-github.com/black-forest-labs/flux-discord-bot
+github.com/MaanavD/bfl-launch-kit
 Add to Discord → fluxbot.vercel.app
-FLUX.2 API → api.bfl.ai
+Get API key → dashboard.bfl.ai
 ```
 
 **CapCut end card:**
@@ -478,7 +478,7 @@ You need these designed outside CapCut (Canva or Figma recommended), exported as
 | G1 | **Lower third: FluxBot intro** | "FluxBot — Open Source Discord Image Bot" / "Powered by Black Forest Labs FLUX.2 API". Dark semi-transparent bar. 1920×200px. PNG with transparency. |
 | G2 | **Cost breakdown** | "47 images / $1.41 / $0.03 per image". Full 1920×1080. Dark background. |
 | G3 | **Pricing comparison** | FluxBot vs Canva vs Shutterstock vs Designer. Full 1920×1080. Dark background. |
-| G4 | **CTA card** | "Ready to try it yourself? api.bfl.ai". ~400×120px. PNG with transparency. |
+| G4 | **CTA card** | "Ready to try it yourself? dashboard.bfl.ai". ~400×120px. PNG with transparency. |
 | G5 | **"Same prompt" text card** | "Same prompt. Different users. Different art." Full 1920×1080. Transparent background, white bold text centered. |
 | G6 | **"0.8 seconds" text card** | Large centered text. Full 1920×1080. Transparent background. *(Or just use CapCut text — this one's simple enough.)* |
 | G7 | **End card** | The four links + "FluxBot — Open Source". Full 1920×1080. Black background. Leave space for YouTube end screen elements. |

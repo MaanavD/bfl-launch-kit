@@ -212,10 +212,10 @@ Image appears — same composition, Vermeer painting style. Hold fullscreen 3 se
 
 ## CUT 16 — API Key + Pricing (4:30)
 
-**Record:** Screen recording — browser at api.bfl.ai, show sign-up briefly, show the "Copy" button for the key (blur the actual key). Then show the cost breakdown graphic.
+**Record:** Screen recording — browser at dashboard.bfl.ai, show sign-up briefly, show the "Copy" button for the key (blur the actual key). Then show the cost breakdown graphic.
 
 **VO:**
-"Step one: get a FLUX API key. Head to api.bfl.ai, sign up — takes about thirty seconds — grab your API key, and you're set. Now let me put some numbers on this — because the pricing is kind of wild."
+"Step one: get a FLUX API key. Head to dashboard.bfl.ai, sign up, grab your API key, and you're set. Now let me put some numbers on this — because the pricing is kind of wild."
 
 *(cost graphic appears)*
 
@@ -226,7 +226,7 @@ Image appears — same composition, Vermeer painting style. Hold fullscreen 3 se
 "And that's Pro pricing. Klein is a fraction of a cent — sub-second generation at $0.014 per image. Basically free."
 
 > On-screen: cost graphic (47 images / $1.41 / $0.03 per image) then comparison graphic.
-> Bottom-right card: "Ready to try it yourself? api.bfl.ai — free tier, no credit card"
+> Bottom-right card: "Ready to try it yourself? dashboard.bfl.ai - create a key"
 
 ---
 
@@ -311,7 +311,7 @@ Pre-generated images to stage if needed:
 
 **Record:** Screen recording — show the GitHub repo page and README briefly. Then face cam for the final lines.
 
-> On-screen: "github.com/black-forest-labs/flux-discord-bot / Link in description ↓"
+> On-screen: "github.com/MaanavD/bfl-launch-kit / Link in description ↓"
 
 **VO (over GitHub):**
 "If you want to self-host or customize — clone the repo, add your bot token, deploy to Railway, and you're live. If you just want to use it — the landing page is all you need."
@@ -324,4 +324,4 @@ Pre-generated images to stage if needed:
 "Go make something."
 
 > Hard cut to black. End card with subscribe button.
-> End card text: "FluxBot — Open Source / github link / Add to Discord → fluxbot.vercel.app / FLUX.2 API → api.bfl.ai"
+> End card text: "FluxBot — Open Source / github.com/MaanavD/bfl-launch-kit / Add to Discord → fluxbot.vercel.app / Get API key → dashboard.bfl.ai"

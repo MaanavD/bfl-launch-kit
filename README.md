@@ -1,48 +1,88 @@
 # FLUX.2 Launch Kit
 
-Launch-day content for FLUX.2 by Black Forest Labs - written tutorial, video walkthrough, blog post, and strategy note.
+Launch-ready developer content for the Black Forest Labs FLUX.2 case study: strategy note, launch blog post, written tutorial, video walkthrough, and two working example projects.
 
-## What's here
+## Start here
 
-| Folder | Description |
-|--------|-------------|
-| `web/` | Next.js site presenting all four deliverables (run this to see everything) |
-| `thumbnail-generator/` | CLI tool from the written tutorial - turn a video description into 3 AI thumbnails |
-| `pipeline/` | Express server that automates thumbnail generation and YouTube publishing |
-| `bot/` | FluxBot - Discord bot from the video tutorial, powered by FLUX.2 |
-| `assets/` | FLUX.2-generated images used as video B-roll |
-| `examples/` | Sample headshot and outputs for the thumbnail generator |
+- `web/` is the main submission site and the best place to review the full package.
+- `thumbnail-generator/` is the CLI app from the written tutorial.
+- `bot/` is FluxBot, the Discord bot featured in the video walkthrough.
+- `pipeline/` is the production-style extension that automates thumbnail generation for new YouTube uploads.
 
-## Run the site
+## Repo map
+
+| Path | What it contains |
+|------|------------------|
+| `web/` | Next.js site packaging the strategy, blog, tutorial, video, and FluxBot companion page |
+| `thumbnail-generator/` | Node.js CLI that turns a video description into three FLUX.2 thumbnail directions |
+| `bot/` | Python Discord bot with `/generate`, `/restyle`, per-user styles, and key management |
+| `pipeline/` | Express server that hooks thumbnail generation into a YouTube publishing workflow |
+| `assets/` | FLUX.2-generated images plus the HTML source for the video graphics |
+| `examples/` | Sample headshot and generated outputs used in the tutorial |
+
+## Run locally
+
+### Submission site
 
 ```bash
 cd web
 npm install
 npm run dev
-# → http://localhost:3000
 ```
 
-## Run the thumbnail generator
+Open `http://localhost:3000`.
+
+### Thumbnail generator
 
 ```bash
 cd thumbnail-generator
 npm install
-cp .env.example .env  # add your BFL_API_KEY
 node src/index.js "Your video description here"
 node src/index.js "Your video description here" --face ../examples/headshot.jpg
 ```
 
-## Edit content
+Copy `thumbnail-generator/.env.example` to `.env` and add `BFL_API_KEY` before running the CLI.
 
-The four tabs on the site are driven by markdown files in `web/content/`:
+### FluxBot
 
-- `web/content/tutorial.md` - Written Tutorial tab
-- `web/content/blog.md` - Blog Post tab
-- `web/content/strategy.md` - Strategy tab
-- `web/app/components/VideoTab.tsx` - Video tab (React component, contains the image gallery)
+```bash
+cd bot
+pip install -r requirements.txt
+python main.py
+```
 
-Each markdown file has an editing conventions comment at the top explaining the HTML class patterns used for custom layout blocks.
+Copy `bot/.env.example` to `.env` and add `DISCORD_TOKEN` before starting the bot.
 
-## API key
+### Pipeline
 
-Get a BFL API key at [dashboard.bfl.ai](https://dashboard.bfl.ai). Add to `.env` in each project that needs it.
+```bash
+cd pipeline
+npm install
+npm run auth
+npm start
+```
+
+Copy `pipeline/.env.example` to `.env` and fill in the required BFL and YouTube credentials.
+
+## Site content
+
+The main site is driven by markdown files in `web/content/`:
+
+- `web/content/strategy.md` - strategy note
+- `web/content/blog.md` - launch blog post
+- `web/content/tutorial.md` - written tutorial
+- `web/content/video.md` - video overview and production summary
+- `web/content/bot.md` - FluxBot companion page
+
+Each file includes an editing conventions comment at the top describing the supported HTML patterns.
+
+## Supporting production docs
+
+- `SCRIPT.md` - full YouTube script and publishing copy
+- `RECORDING.md` - stripped-down shot-by-shot recording guide
+- `EDITING_GUIDE.md` - CapCut timeline, overlays, and graphics checklist
+
+## API access
+
+- Dashboard and API keys: [dashboard.bfl.ai](https://dashboard.bfl.ai)
+- Documentation: [docs.bfl.ai](https://docs.bfl.ai)

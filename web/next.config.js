@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {
+    root: __dirname,
     rules: {
       '*.md': {
         loaders: ['raw-loader'],

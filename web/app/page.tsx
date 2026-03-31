@@ -104,8 +104,10 @@ export default function Home() {
 
       <footer className="footer">
         <div className="footer-inner">
-          <span className="footer-made">Made with ❤️ by Maanav Dalal</span>
-          <span className="footer-copy">&copy; 2026 Black Forest Labs. All rights reserved.</span>
+          <span className="footer-made">Built by Maanav Dalal</span>
+          <span className="footer-copy">
+            Independent FLUX.2 launch kit for the Black Forest Labs Developer Relations Engineer case study.
+          </span>
         </div>
       </footer>
     </>

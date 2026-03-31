@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "bun next dev --turbopack",
-    "build": "bun next build",
-    "start": "bun next start"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "marked": "^17.0.5",

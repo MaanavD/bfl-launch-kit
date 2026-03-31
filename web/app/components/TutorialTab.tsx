@@ -7,10 +7,10 @@ export default function TutorialTab() {
     <>
       <AuthorNote label="Author's Note" heading="Closing the activation gap">
         <p>
-          This tutorial exists to turn a sign-up who hasn't generated anything yet into an activated user.
-          They need a working result on their machine instantly, and one they understand in under 15 minutes
-           - not a press release or docs, a use case they can sink their teeth into
-          that makes them think "I should build something with this."
+          This tutorial exists to turn a sign-up who has not generated anything yet into
+          an activated user. They need a working result on their machine immediately,
+          and one they can understand in under 15 minutes - not a press release or docs,
+          but a real use case that makes them think &quot;I should build something with this.&quot;
         </p>
       </AuthorNote>
       <MarkdownArticle content={content} />

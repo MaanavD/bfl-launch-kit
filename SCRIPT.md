@@ -297,17 +297,17 @@ That's it. Three steps.
 
 ### 3B: Getting Your API Key (30 seconds) [4:30 - 5:00]
 
-**VISUAL:** Screen recording - browser. Navigate to `api.bfl.ai`.
+**VISUAL:** Screen recording - browser. Navigate to `dashboard.bfl.ai`.
 
 **VO:**
-> "Step one: get a FLUX API key. Head to api.bfl.ai, sign up - takes about thirty seconds…"
+> "Step one: get a FLUX API key. Head to dashboard.bfl.ai, sign up, and grab your key…"
 
 **VISUAL:** Show the sign-up / dashboard briefly. Blur or cover the actual API key, but show the "Copy" button being clicked.
 
 **ON-SCREEN TEXT** (clickable card / end-screen-style annotation, bottom-right, stays 5 seconds):
 ```
 Ready to try it yourself?
-api.bfl.ai - free tier, no credit card
+dashboard.bfl.ai - create a key
 ```
 
 **VO:**
@@ -435,7 +435,7 @@ Hiring a designer: $50-200 per graphic
 
 **ON-SCREEN TEXT** (large, centered, stays on screen for 5+ seconds):
 ```
-github.com/black-forest-labs/flux-discord-bot
+github.com/MaanavD/bfl-launch-kit
 Link in description ↓
 ```
 
@@ -457,9 +457,9 @@ Link in description ↓
 **ON-SCREEN TEXT** (end card, 5 seconds):
 ```
 FluxBot - Open Source
-github.com/black-forest-labs/flux-discord-bot
+github.com/MaanavD/bfl-launch-kit
 Add to Discord → fluxbot.vercel.app
-FLUX.2 API → api.bfl.ai
+Get API key → dashboard.bfl.ai
 ```
 
 ---
@@ -500,7 +500,7 @@ FLUX.2 API → api.bfl.ai
 3. **Discord demo - /restyle with attached image** (drag-drop photo, type command, see result)
 4. **Discord demo - side-by-side style comparison** (or composite in editing)
 5. **Discord demo - multiple users generating** (use friends/alt accounts - show emoji reactions on outputs)
-6. **Browser - api.bfl.ai sign-up and API key copy** (blur actual key)
+6. **Browser - dashboard.bfl.ai sign-up and API key copy** (blur actual key)
 7. **Browser - BFL API dashboard with usage/cost stats** (show the $1.41 total or your real numbers)
 8. **Discord - Klein speed demo** (show near-instant generation with model picker - ADD TIMER OVERLAY IN EDITING)
 9. **Discord - community montage** (friends generating a burst of images, emoji reactions, casual messages)
@@ -553,8 +553,8 @@ I built an open-source Discord bot that generates AI images using FLUX.2 by Blac
 Every user gets their own personal style. Type a prompt, get a stunning image - right in your group chat. Choose between four FLUX models: Pro, Max, Klein, or Flex.
 
 🔗 Add to your server: fluxbot.vercel.app
-🔗 Clone the bot: github.com/black-forest-labs/flux-discord-bot
-🔗 Get your FLUX API key: api.bfl.ai
+🔗 Clone the repo: github.com/MaanavD/bfl-launch-kit
+🔗 Get your FLUX API key: dashboard.bfl.ai
 🔗 FLUX documentation: docs.bfl.ai
 
 Commands:
@@ -584,9 +584,9 @@ Want to set this up yourself? Two options:
 EASY: Click "Add to Discord" → fluxbot.vercel.app → run /setkey (server key) or /mykey (personal key) with your BFL API key → done.
 
 SELF-HOST:
-1. Clone the repo → github.com/black-forest-labs/flux-discord-bot
+1. Clone the repo → github.com/MaanavD/bfl-launch-kit
 2. Create a Discord app → discord.com/developers
-3. Get a FLUX API key → api.bfl.ai
+3. Get a FLUX API key → dashboard.bfl.ai
 4. Deploy to Railway or run `python main.py`
 
 Drop a comment if you get it running - we want to see what you build 🔥

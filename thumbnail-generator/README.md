@@ -10,8 +10,7 @@ The CLI takes a description, wraps it in three style templates, sends all three 
 # 1. Install dependencies
 npm install
 
-# 2. Create .env with your BFL API key
-echo "BFL_API_KEY=your_key_here" > .env
+# 2. Copy .env.example to .env and add your BFL API key
 
 # 3. Run it
 node src/index.js "Your detailed video description here"
@@ -28,7 +27,7 @@ node src/index.js --file description.txt --face headshot.jpg
 
 ## API Key
 
-- **BFL API Key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) - create account, add credits, generate key
+- **BFL API Key:** [dashboard.bfl.ai](https://dashboard.bfl.ai/) - create account, generate key
 
 ## Cost
 

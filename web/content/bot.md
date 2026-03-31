@@ -214,7 +214,7 @@ photo and the FLUX.2 output.
 <li>
 <div>
 
-**Set your API key** — Grab a key at [api.bfl.ai](https://api.bfl.ai), then run `/setkey` in your server.
+**Set your API key** — Grab a key at [dashboard.bfl.ai](https://dashboard.bfl.ai), then run `/setkey` in your server.
 
 </div>
 </li>
