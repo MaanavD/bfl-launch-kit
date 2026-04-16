@@ -468,6 +468,74 @@ a {
   text-align: center;
 }
 
+/* ── Starter Cards (blog conversion grid) ── */
+
+.starter-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prose .starter-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.prose .starter-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -12px oklch(42% 0.1 155 / 0.45);
+  color: var(--text);
+}
+
+.starter-card__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.starter-card__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin: 0.4rem 0 0.5rem;
+  color: var(--text);
+}
+
+.starter-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+
+.starter-card__cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.prose .starter-card:hover .starter-card__cta {
+  color: var(--accent-hover);
+}
+
+@media (max-width: 720px) {
+  .starter-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Article Figures ── */
 
 .article-figure {

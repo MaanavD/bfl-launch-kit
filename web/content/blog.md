@@ -206,6 +206,23 @@ Sign up at [dashboard.bfl.ai](https://dashboard.bfl.ai), create a key, and gener
 
 Once you're in, pick a starting point:
 
-- [**Tutorial: Build a YouTube thumbnail generator**](https://github.com/MaanavD/bfl-launch-kit/tree/main/thumbnail-generator) - zero to three AI-generated thumbnails from a single CLI command.
-- [**FluxBot for Discord**](https://github.com/MaanavD/bfl-launch-kit/tree/main/bot) - deploy text-to-image, restyle, and style presets in your server.
-- [**API docs**](https://docs.bfl.ai/) - one endpoint covers text-to-image and editing. POST a prompt, poll, download.
+<div class="starter-cards">
+  <a href="https://github.com/MaanavD/bfl-launch-kit/tree/main/thumbnail-generator" target="_blank" rel="noopener noreferrer" class="starter-card">
+    <span class="starter-card__eyebrow">Tutorial</span>
+    <h3 class="starter-card__title">YouTube thumbnail generator</h3>
+    <p class="starter-card__desc">Zero to three AI-generated thumbnails from a single CLI command.</p>
+    <span class="starter-card__cta">Read the tutorial →</span>
+  </a>
+  <a href="https://github.com/MaanavD/bfl-launch-kit/tree/main/bot" target="_blank" rel="noopener noreferrer" class="starter-card">
+    <span class="starter-card__eyebrow">Project</span>
+    <h3 class="starter-card__title">FluxBot for Discord</h3>
+    <p class="starter-card__desc">Deploy text-to-image, restyle, and style presets in your server.</p>
+    <span class="starter-card__cta">Deploy the bot →</span>
+  </a>
+  <a href="https://docs.bfl.ai/" target="_blank" rel="noopener noreferrer" class="starter-card">
+    <span class="starter-card__eyebrow">Reference</span>
+    <h3 class="starter-card__title">API docs</h3>
+    <p class="starter-card__desc">One endpoint covers text-to-image and editing. POST a prompt, poll, download.</p>
+    <span class="starter-card__cta">Browse the docs →</span>
+  </a>
+</div>
