@@ -37,7 +37,7 @@ We denominate launch grants in **pro-tier generations**, not dollars. "Here's $5
 
 **10 pro generations on signup** — no payment method required. **25 with a promo code** through tracked channels. Scarcity framing: the grant is tied to launch week.
 
-**Per-channel promo codes** for attribution (e.g., `FIRE-FLUX`, `FLUXTUTORIAL`). One code per channel and partner so the growth team knows where we're converting.
+**Per-channel promo codes** for attribution (e.g., `FIRE-FLUX` (Fireship), `FLUX-T3` (Theo), `FLUX-PRIME` (ThePrimeagen)). One code per channel and partner so the growth team knows where we're converting.
 
 **"First API call" bonus:** +10 pro generations after a successful first generation. Rewards action, not only interest.
 
