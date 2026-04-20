@@ -198,6 +198,8 @@ For reference: 47 images on [pro] costs $1.41. A single stock photo download sta
 
 Sign up at [dashboard.bfl.ai](https://dashboard.bfl.ai), create a key, and generate your first image in under a minute.
 
+<p class="callout"><strong>Launch week: 10 pro generations on the house.</strong> 25 if you sign up through a partner code. That's a full thumbnail set, a restyle pipeline prototype, or a prompt you actually stress-test before any billing starts - we'd rather tell you what you get to build than what it costs.</p>
+
 <div class="cta-block">
   <a href="https://dashboard.bfl.ai" target="_blank" rel="noopener noreferrer" class="btn-primary">
     Get Your API Key →

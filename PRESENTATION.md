@@ -112,7 +112,7 @@ So every decision I made starts from one question: **how do you turn a sign-up i
 
 2. **Launch-day sequencing matters.** "Blog and credit grant go live at T-0. Video drops at T+2 hours to ride the discussion wave. Tutorial publishes at T+4 hours with a 48-hour challenge pinned to it. This isn't arbitrary — it's designed so each piece amplifies the one before it."
 
-3. **Credits as activation mechanics.** "$5 base credits with no payment method required — that removes the biggest friction point. $10 with a promo code, per-channel codes for attribution. And a +$5 bonus after your first successful generation. That first-call bonus is the key — it rewards activation, not just signup."
+3. **Grants as activation mechanics — denominated in generations, not dollars.** "Every signup gets 10 pro-tier generations on the house, 25 with a promo code, +10 after the first successful generation. I deliberately talk in generations, not dollars. '$5 in credits' reads like a coupon. '25 pro generations' reads like a runway to build something. Same cost, better framing — and it tells the developer what they *get*, not what we're spending."
 
 4. **Distribution beyond BFL.** "Partners get launch kits with per-partner promo codes. FluxBot is MIT-licensed for community distribution. The tutorial is designed to be cross-posted. The goal is to be on every surface where developers discover tools — not just BFL's own blog."
 
@@ -125,9 +125,16 @@ So every decision I made starts from one question: **how do you turn a sign-up i
 "Four things, in priority order:
 
 1. **Interactive playground** on docs.bfl.ai — generate an image without creating an account. Lowest possible friction.
-2. **48-hour launch challenge** — $100 for top 10, $500 first place. Builds a content flywheel.
-3. **Partner launch kits** — per-partner landing pages, promo codes, integration guides for Replicate, Fal, Together, Fireworks.
-4. **Follow-up content pipeline** — style training guide, power-user patterns, community spotlights. Launch day gets attention; week 2-4 content sustains it."
+2. **Partner launch kits** — per-partner landing pages, promo codes, integration guides for Replicate, Fal, Together, Fireworks.
+3. **Follow-up content pipeline** — style training guide, power-user patterns, community spotlights. Launch day gets attention; week 2-4 content sustains it.
+4. **48-hour launch challenge** — the centerpiece of week-1 UGC. See below."
+
+### The 48-hour launch challenge
+
+"This is the piece I'd spend the most energy on if I had another week. Build anything with FLUX.2 in 48 hours, best consumer workflow wins.
+
+- **Prize pool: up to 10 Mac minis.** I'm leaning into the Apple Silicon dev hype already on every timeline. Top challenge builds win a machine, plus a dedicated *'Run [klein] locally'* category judged on the best fully-offline workflow using the open weights. The marketing beat writes itself: FLUX.2 on your desk, no cloud, on a box the size of a hardcover. Reinforces that FLUX runs *everywhere* — managed API or your own silicon — and gives the open-weights community a concrete reason to show up to a BFL-run event.
+- **Discord as the on-ramp, same mechanic.** Joining the BFL Discord and linking your dashboard account unlocks a bonus round of pro generations. Same 'tell them what they get, not what it costs' framing. And Discord becomes the channel where we post challenge updates, spotlight builds, and stay in the feedback loop with the people most likely to stick."
 
 ---
 
@@ -148,7 +155,7 @@ Thumbnails: immediately useful, visual, repeatable (3+ images per use = habit-fo
 Three metrics tracked weekly: (1) signup → first API call rate (target 30%+), (2) day-7 retention, (3) cost per activated user. Everything else is a vanity metric.
 
 ### "What about the open-source community?"
-FluxBot is MIT-licensed. The tutorial and blog acknowledge ComfyUI, Replicate, Fal, and open weights explicitly. The strategy includes per-partner promo codes and community Discord engagement. BFL wins when the ecosystem grows — even if some usage runs through partners.
+FluxBot is MIT-licensed. The tutorial and blog acknowledge ComfyUI, Replicate, Fal, and open weights explicitly. The strategy includes per-partner promo codes and community Discord engagement. But the real stickiness lever is **showing up** — a rotating DevRel on-call presence in r/StableDiffusion, r/MachineLearning, HN comments, X/Twitter replies, the GitHub issue tracker, and Discord. Triaging bugs in hours, not weeks. Replying to real builds. Every responsive thread is a retention event, and it's the cheapest moat we have against partners who can only offer generic support. BFL wins when the ecosystem grows — and developers stick with APIs maintained by humans who answer them.
 
 ### "Why didn't you do X?" (sizzle reel, influencer campaign, etc.)
 BFL can get attention — the last launch proved that. The constraint is activation, not awareness. I'd do those things too, but they solve a problem that's already partially solved. Converting sign-ups is the bottleneck.
