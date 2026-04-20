@@ -114,25 +114,6 @@ Plenty of models can generate a strong first image. FLUX.2 is differentiated by 
 
 ---
 
-## Multi-Reference Control
-
-Every major model can maintain character consistency now. Some support explicit reference images, others rely on conversation context. All produce strong results.
-
-The developer experience differs. FLUX.2's reference-image API is stateless: attach images, get consistent output, no session to manage. That makes it straightforward to integrate into automated pipelines, batch scripts, and CI workflows where you need deterministic consistency across hundreds of generations without managing conversation state.
-
-<div class="comic-strip">
-  <p class="comic-strip-label">FLUX.2 [max]: three scenes, one reference image</p>
-  <div class="comic-strip-panels">
-    <img src="/assets/blog/comic-flux-1.jpg" alt="Panel 1: Woman with red hair and glasses coding at a messy desk, graphic novel style" />
-    <img src="/assets/blog/comic-flux-2.jpg" alt="Panel 2: Same woman in rainy street at night with umbrella and neon reflections" />
-    <img src="/assets/blog/comic-flux-3.jpg" alt="Panel 3: Same woman laughing in a sunlit cafe booth" />
-  </div>
-</div>
-
-LoRAs still make sense for deeply specialized aesthetics, but the consistency problem that drove most fine-tuning is solved at inference time.
-
----
-
 ## Text and Color Precision
 
 **Typography.** FLUX.2 handles dense multi-line typography, varied font weights, and columnar layouts cleanly. A meaningful jump from where the field was a year ago.
@@ -149,6 +130,25 @@ LoRAs still make sense for deeply specialized aesthetics, but the consistency pr
     <figcaption>Prompt specified #FF6B35, #1B998B, and #7B2D8E. The model matched all three. Generated with [pro].</figcaption>
   </figure>
 </div>
+
+---
+
+## Multi-Reference Control
+
+Every major model can maintain character consistency now. Some support explicit reference images, others rely on conversation context. All produce strong results.
+
+The developer experience differs. FLUX.2's reference-image API is stateless: attach images, get consistent output, no session to manage. That makes it straightforward to integrate into automated pipelines, batch scripts, and CI workflows where you need deterministic consistency across hundreds of generations without managing conversation state.
+
+<div class="comic-strip">
+  <p class="comic-strip-label">FLUX.2 [max]: three scenes, one reference image</p>
+  <div class="comic-strip-panels">
+    <img src="/assets/blog/comic-flux-1.jpg" alt="Panel 1: Woman with red hair and glasses coding at a messy desk, graphic novel style" />
+    <img src="/assets/blog/comic-flux-2.jpg" alt="Panel 2: Same woman in rainy street at night with umbrella and neon reflections" />
+    <img src="/assets/blog/comic-flux-3.jpg" alt="Panel 3: Same woman laughing in a sunlit cafe booth" />
+  </div>
+</div>
+
+LoRAs still make sense for deeply specialized aesthetics, but the consistency problem that drove most fine-tuning is solved at inference time.
 
 ---
 

@@ -18,9 +18,11 @@ EDITING CONVENTIONS
   <p class="article-lead">A single CLI command that turns a video description into three thumbnail options. No design tools, no templates, no back-and-forth.</p>
 </header>
 
-<figure class="article-figure article-figure--wide">
-  <img src="/tutorial/cli-comparison.jpg" alt="Generated comparison grid showing three thumbnail directions" loading="lazy" />
-</figure>
+<div class="thumbnail-grid">
+  <img src="/tutorial/text-cinematic.jpg" alt="Cinematic thumbnail with rendered title text" loading="lazy" />
+  <img src="/tutorial/text-graphic.jpg" alt="Graphic thumbnail with rendered title text" loading="lazy" />
+  <img src="/tutorial/text-abstract.jpg" alt="Abstract thumbnail with rendered title text" loading="lazy" />
+</div>
 
 FLUX.2 is the latest image generation model from Black Forest Labs (the team behind Stable Diffusion) - and the BFL API is the fastest path from zero to a high fidelity generated image.
 
