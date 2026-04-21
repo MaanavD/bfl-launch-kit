@@ -215,7 +215,7 @@ Once you're in, pick a starting point:
     <p class="starter-card__desc">Zero to three AI-generated thumbnails from a single CLI command.</p>
     <span class="starter-card__cta">Read the tutorial →</span>
   </a>
-  <a href="https://github.com/MaanavD/bfl-launch-kit/tree/main/bot" target="_blank" rel="noopener noreferrer" class="starter-card">
+  <a href="https://github.com/MaanavD/bfl-launch-kit/tree/master/bot" target="_blank" rel="noopener noreferrer" class="starter-card">
     <span class="starter-card__eyebrow">Project</span>
     <h3 class="starter-card__title">FluxBot for Discord</h3>
     <p class="starter-card__desc">Deploy text-to-image, restyle, and style presets in your server.</p>

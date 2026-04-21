@@ -7,7 +7,7 @@ import rawContent from "../../content/bot.md";
 const DISCORD_CLIENT_ID =
   process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID ?? "YOUR_CLIENT_ID";
 const DISCORD_INVITE = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&permissions=2147534848&scope=bot%20applications.commands`;
-const GITHUB_REPO = "https://github.com/MaanavD/bfl-launch-kit/tree/main/bot";
+const GITHUB_REPO = "https://github.com/MaanavD/bfl-launch-kit/tree/master/bot";
 
 export default function BotTab() {
   const content = useMemo(() => {
